@@ -8,9 +8,9 @@ function Register () {
     addressStreet: '',
     suburb: '',
     city: '',
-    product: null,
-    username: '',
-    password: ''
+    product: null
+    // username: '',
+    // password: ''
   })
 
   function handleChange (e) {
@@ -23,10 +23,10 @@ function Register () {
 
   function handleClick (e) {
     e.preventDefault()
+    // Auth0 stuff goes here? --James
   }
   return (
     <div>
-
       <form>
         <label htmlFor="firstName">
           <h2>first name</h2>
@@ -122,7 +122,6 @@ function Register () {
         </label>
         <button type='button' onClick={handleClick}>Register</button>
       </form>
-
     </div>
   )
 }
