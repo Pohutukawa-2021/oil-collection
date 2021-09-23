@@ -7,13 +7,13 @@ import EditDetails from './EditDetails'
 import Register from './Register'
 import SignIn from './SignIn'
 
-function App () {
+function App() {
   return (
     <div className='app-container'>
-      <Route path='/' component={SignIn} />
+      <Route exact path='/' component={SignIn} />
+      <Route path='/details/update' component={EditDetails} />
       {/* <Route path='' component={Register} />
       <Route path='' component={CollectionRequest} />
-      <Route path='' component={EditDetails} />
       <Route path='' component={Register} /> */}
     </div>
   )
