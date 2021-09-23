@@ -1,8 +1,15 @@
 import React from 'react'
 import Footer from './Footer'
+import { connect } from 'react-redux'
+import getCustomerDetails from '../api/clients'
 
 function CollectionRequest (props) {
-  const { businessName, address, city } = props
+  const { id, businessName, address, city } = props
+
+  function addNewOrder () {
+    addOrder(props)
+  }
+
   return (
     <>
       <div>
@@ -15,7 +22,7 @@ function CollectionRequest (props) {
         <p>{city}</p>
 
         <h2>for oil collection</h2>
-        <button>CLICK HERE</button>
+        <button onClick={addNewOrder}>CLICK HERE</button>
 
       </div>
       <Footer/>
