@@ -4,6 +4,7 @@
   "description": "React Redux using express",
   "main": "server/index.js",
   "scripts": {
+    "knex": "knex --knexfile server/db/knexfile.js",
     "client": "npm run webpack",
     "server": "node server",
     "dev:client": "npm run webpack -- --watch",
@@ -11,8 +12,8 @@
     "webpack": "webpack --config client/webpack.config.js",
     "start": "run-s client server",
     "dev": "run-p dev:client dev:server",
-    "knex": "knex --knexfile server/db/knexfile.js",
-    "lint": "eslint . --ext .js,.jsx"
+    "lint": "eslint . --ext .js,.jsx",
+    "test": "jest"
   },
   "author": "EDA",
   "license": "ISC",
@@ -62,7 +63,8 @@
     "redux": "^4.0.5",
     "webpack": "^5.33.2",
     "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "supertest": "^6.1.6"
   },
   "repository": {
     "type": "git",

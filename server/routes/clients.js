@@ -29,3 +29,15 @@ router.get('/:id', async (req, res) => {
     res.status(500).json({ message: 'unable to retrieve user roles' })
   }
 })
+
+// GET /api/v1/register/:id
+router.get('/:id', (req, res) => {
+  db.getCustomerDetails(req.params.id)
+    .then(results => {
+      res.json(results)
+      return null
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message })
+    })
+})
