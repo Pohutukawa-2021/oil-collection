@@ -4,6 +4,7 @@
   "description": "React Redux using express",
   "main": "server/index.js",
   "scripts": {
+    "knex": "knex --knexfile server/db/knexfile.js",
     "client": "npm run webpack",
     "server": "node server",
     "dev:client": "npm run webpack -- --watch",
