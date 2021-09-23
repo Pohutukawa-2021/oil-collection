@@ -12,7 +12,8 @@
     "start": "run-s client server",
     "dev": "run-p dev:client dev:server",
     "knex": "knex --knexfile server/db/knexfile.js",
-    "lint": "eslint . --ext .js,.jsx"
+    "lint": "eslint . --ext .js,.jsx",
+    "test": "jest"
   },
   "author": "EDA",
   "license": "ISC",
