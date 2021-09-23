@@ -7,7 +7,7 @@ module.exports = {
 function getCustomerDetails (id, db = connection) {
   return db('clients')
     .where('id', id)
-    .first(
+    .select(
       'id',
       'first_name as firstName',
       'last_name as lastName',
@@ -21,7 +21,5 @@ function getCustomerDetails (id, db = connection) {
       'price',
       'order_active as orderActive'
     )
-    .then(result => {
-      return result
-    })
+    .first()
 }
