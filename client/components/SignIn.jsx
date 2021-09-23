@@ -1,41 +1,17 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 import Header from './Header'
 
-function SingIn () {
+function SignIn () {
   return (
     <>
       <Header />
-
       <div>
-
-        <form>
-          <label htmlFor="userName">
-            <h2>user</h2>
-            <input
-              type="text"
-              id='user'
-              name='user'
-              placeholder="example@email.com"
-
-            />
-          </label>
-          <label htmlFor="password">
-            <h2>password</h2>
-            <input
-              type="text"
-              id='password'
-              name='password'
-              placeholder="your password"
-            />
-          </label>
-          <button>Login</button>
-          <button>Register</button>
-        </form>
-
+        <button>Sign in</button> {/* Link to Auth0? */}
+        <button><Link to='/register'>Register</Link></button>
       </div>
     </>
   )
 }
 
-export default SingIn
+export default SignIn

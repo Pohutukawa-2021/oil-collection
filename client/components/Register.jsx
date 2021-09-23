@@ -93,10 +93,8 @@ function Register () {
             name='product'
             onChange={handleChange}
             placeholder="enter product"
-          >
-            <option value={1}>oil</option>
-            <option value={2}>fat</option>
-          </select>
+          />
+          <option hidden></option>
         </label>
         <label htmlFor="username">
           <h2>user name</h2>
