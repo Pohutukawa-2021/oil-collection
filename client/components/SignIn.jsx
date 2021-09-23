@@ -7,7 +7,7 @@ function SignIn () {
     <>
       <Header />
       <div>
-        <button>Sign in</button>
+        <button>Sign in</button> {/* Link to Auth0? */}
         <button><Link to='/register'>Register</Link></button>
       </div>
     </>
