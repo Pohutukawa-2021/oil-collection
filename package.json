@@ -12,6 +12,7 @@
     "webpack": "webpack --config client/webpack.config.js",
     "start": "run-s client server",
     "dev": "run-p dev:client dev:server",
+    "knex": "knex --knexfile server/db/knexfile.js",
     "lint": "eslint . --ext .js,.jsx"
   },
   "author": "EDA",
