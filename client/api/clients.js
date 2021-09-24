@@ -8,6 +8,13 @@ export function getCustomerDetails (id) {
     .catch(errorHandler('GET', '/api/v1/clients'))
 }
 
+export function addOrder (id) {
+  return request.patch('/api/v1/clients/request/')
+    .send(id)
+    .then(() => { return null })
+    .catch(errorHandler('POST', '/api/v1/clients/request'))
+}
+
 function errorHandler (method, route) {
   return (err) => {
     if (err.message === 'Not Found') {
