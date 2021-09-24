@@ -1,7 +1,7 @@
 const express = require('express')
 
 const db = require('../db/clients')
-const { getUserRoles } = require('../auth0')
+const { checkJwt } = require('../auth0')
 
 const router = express.Router()
 
@@ -19,19 +19,8 @@ router.post('/', (req, res) => {
     })
 })
 
-router.get('/:id', async (req, res) => {
-  const id = req.params.id
-  try {
-    const roles = await getUserRoles(id)
-    res.json({ roles })
-  } catch (error) {
-    console.error(error.message)
-    res.status(500).json({ message: 'unable to retrieve user roles' })
-  }
-})
-
 // GET /api/v1/register/:id
-router.get('/:id', (req, res) => {
+router.get('/:id', checkJwt, (req, res) => {
   db.getCustomerDetails(req.params.id)
     .then(results => {
       res.json(results)
