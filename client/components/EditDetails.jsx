@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 //below not created yet
@@ -22,6 +23,8 @@ export function EditDetails(props) {
 
   })
 
+  const history = useHistory()
+
   //below function used for testing only
   // can be deleted once we create and import updateDetails function
   function updateDetails(form) {
@@ -43,6 +46,7 @@ export function EditDetails(props) {
   function handleClick(e) {
     e.preventDefault()
     props.dispatch(updateDetails(form))
+    history.push('/')
   }
 
   return (
