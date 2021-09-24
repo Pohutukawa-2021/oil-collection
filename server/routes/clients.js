@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
     })
 })
 
-// GET /api/v1/register/:id
+// GET /api/v1/clients/:id
 router.get('/:id', checkJwt, (req, res) => {
   db.getCustomerDetails(req.params.id)
     .then(results => {
@@ -27,6 +27,17 @@ router.get('/:id', checkJwt, (req, res) => {
       return null
     })
     .catch(err => {
+      res.status(500).json({ error: err.message })
+    })
+})
+
+router.patch('/:id/request', (req, res) => {
+  db.activateOrder(req.params.id)
+    .then((request) => {
+      res.status(200).json(request)
+      return null
+    })
+    .catch((err) => {
       res.status(500).json({ error: err.message })
     })
 })

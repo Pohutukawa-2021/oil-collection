@@ -21,3 +21,11 @@ test('GET customer details by id', () => {
       return null
     })
 })
+
+test('SEND new request/order', () => {
+  return db.activateOrder(3, testDb)
+    .then(request => {
+      expect(request.orderActive).toBe(1)
+      return null
+    })
+})
