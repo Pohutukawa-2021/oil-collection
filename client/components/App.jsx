@@ -18,8 +18,8 @@ function App () {
       <Route exact path='/' component={Nav} />
       <Route exact path='/' component={SignIn} />
       <Route path='/details/update' component={EditDetails} />
-      {/* <Route path='' component={Register} />
-      <Route path='' component={CollectionRequest} />
+      <Route path='/register' component={Register} />
+      {/* <Route path='' component={CollectionRequest} />
       <Route path='' component={Register} /> */}
     </div>
   )
