@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 // import { updateDetails } from '../actions/clients'
 
-export function EditDetails(props) {
+function EditDetails (props) {
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -16,15 +16,15 @@ export function EditDetails(props) {
   })
 
   // below function used for testing only
-  function updateDetails(form) {
+  function updateDetails (form) {
     console.log("Sending the following details to '../actions/clients':", form)
     return ({
-      type: "",
+      type: '',
       form
     })
   }
 
-  function handleChange(e) {
+  function handleChange (e) {
     const { name, value } = e.target
     setForm({
       ...form,
@@ -32,7 +32,7 @@ export function EditDetails(props) {
     })
   }
 
-  function handleClick(e) {
+  function handleClick (e) {
     e.preventDefault()
     props.dispatch(updateDetails(form))
   }
@@ -138,10 +138,9 @@ export function EditDetails(props) {
       </button>
     </form>
   )
-
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     details: state.details
   }
