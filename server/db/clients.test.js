@@ -23,10 +23,9 @@ test('GET customer details by id', () => {
 })
 
 test('SEND new request/order', () => {
-  return db.sendRequest(3, testDb)
+  return db.activateOrder(3, testDb)
     .then(request => {
       expect(request.orderActive).toBe(1)
-      expect(request.orderActive).not.toBe(0)
       return null
     })
 })

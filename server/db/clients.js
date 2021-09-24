@@ -2,7 +2,7 @@ const connection = require('./connection')
 
 module.exports = {
   getCustomerDetails,
-  sendRequest
+  activateOrder
 }
 
 function getCustomerDetails (id, db = connection) {
@@ -25,7 +25,7 @@ function getCustomerDetails (id, db = connection) {
     .first()
 }
 
-function sendRequest (id, db = connection) {
+function activateOrder (id, db = connection) {
   return db('clients')
     .where('id', id)
     .update({
