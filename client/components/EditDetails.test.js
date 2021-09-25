@@ -1,10 +1,7 @@
 import React from 'react'
-import { Provider } from 'react-redux'
-import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
+import { screen } from '@testing-library/react'
 
-import store from '../index'
 import { renderWithRedux } from '../testUtils'
 
 import EditDetails from './EditDetails'
