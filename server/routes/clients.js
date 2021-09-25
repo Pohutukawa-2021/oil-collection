@@ -7,6 +7,19 @@ const router = express.Router()
 module.exports = router
 
 // GET /api/v1/clients/:id
+
+router.post('/', (req, res) => {
+  const newUser = req.body
+  db.addUser(newUser)
+    .then(() => {
+      res.sendStatus(201)
+      return null
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message })
+    })
+})
+
 router.get('/:id', (req, res) => {
   db.getCustomerDetails(req.params.id)
     .then(results => {
