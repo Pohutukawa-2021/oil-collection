@@ -28,3 +28,15 @@ router.patch('/:id/request', (req, res) => {
       res.status(500).json({ error: err.message })
     })
 })
+
+router.patch('/:id/update', (req, res) => {
+  const updateDetails = req.body
+  db.updateCustomerDetails(updateDetails)
+    .then((update) => {
+      res.status(200).json(update)
+      return null
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message })
+    })
+})
