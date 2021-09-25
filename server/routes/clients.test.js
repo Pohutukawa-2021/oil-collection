@@ -57,3 +57,18 @@ test('UPDATE customer details', () => {
       return null
     })
 })
+
+test('POST adding new user', () => {
+  db.addUser = jest.fn()
+  db.addUser.mockImplementation(() => {
+    return Promise.resolve()
+  })
+  const userData = {}
+  return request(server)
+    .post('/api/v1/clients')
+    .send(userData)
+    .then((response) => {
+      expect(response.status).toBe(201)
+      return null
+    })
+})

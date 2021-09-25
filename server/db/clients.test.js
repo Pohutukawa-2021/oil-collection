@@ -50,3 +50,22 @@ test('UPDATE customer details', () => {
       return null
     })
 })
+
+test('ADD new user', () => {
+  const addNewUser = {
+    firstName: 'firstName',
+    lastName: 'lastName',
+    businessName: 'businessName',
+    address: 'address',
+    suburb: 'suburb',
+    city: 'city',
+    product: 'product'
+  }
+  return db.addUser(addNewUser, testDb)
+    .then(user => {
+      expect(user.firstName).toBe('firstName')
+      expect(user.city).toBe('city')
+      expect(user.product).toBe('product')
+      return null
+    })
+})
