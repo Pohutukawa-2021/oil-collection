@@ -1,2 +1,5 @@
 node_modules
 bundle*
+.env
+*.sqlite3
+.DS_Store
