@@ -15,6 +15,15 @@ export function addOrder (id) {
     .catch(errorHandler('POST', '/api/v1/clients/request'))
 }
 
+export function addUser (user) {
+  return request.post('/api/v1/clients')
+    .send(user)
+    .then(res => {
+      return res.body
+    })
+    .catch(errorHandler('POST', '/api/v1/clients'))
+}
+
 function errorHandler (method, route) {
   return (err) => {
     if (err.message === 'Not Found') {

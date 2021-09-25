@@ -3,7 +3,8 @@ const connection = require('./connection')
 module.exports = {
   getCustomerDetails,
   activateOrder,
-  updateCustomerDetails
+  updateCustomerDetails,
+  addUser
 }
 
 function getCustomerDetails (id, db = connection) {
@@ -51,5 +52,33 @@ function updateCustomerDetails (customerDetails, db = connection) {
     .update(updateObject)
     .then(() => {
       return updateObject
+    })
+}
+
+function addUser (newUser, db = connection) {
+  const { firstName, lastName, businessName, address, suburb, city, product } = newUser
+  const addNewUser = {
+    first_name: firstName,
+    last_name: lastName,
+    business_name: businessName,
+    address_street: address,
+    address_suburb: suburb,
+    address_city: city,
+    product: product
+  }
+  return db('clients')
+    .insert(addNewUser)
+    .then(id => {
+      return {
+        id: id,
+        firstName,
+        lastName,
+        businessName,
+        address,
+        suburb,
+        city,
+        product
+
+      }
     })
 }
