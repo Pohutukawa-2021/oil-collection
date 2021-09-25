@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-  db.getCustomerDetails(req.params.id)
+  db.getClientDetails(req.params.id)
     .then(results => {
       res.json(results)
       return null
@@ -44,7 +44,7 @@ router.patch('/:id/request', (req, res) => {
 
 router.patch('/:id/update', (req, res) => {
   const updateDetails = req.body
-  db.updateCustomerDetails(updateDetails)
+  db.updateClientDetails(updateDetails)
     .then((update) => {
       res.status(200).json(update)
       return null
