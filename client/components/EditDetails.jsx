@@ -1,21 +1,32 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 
+//below not created yet
 // import { updateDetails } from '../actions/clients'
 
 export function EditDetails(props) {
   const [form, setForm] = useState({
-    firstName: '',
-    lastName: '',
-    businessName: '',
-    addressStreet: '',
-    addressSuburb: '',
-    addressCity: '',
-    product: '',
-    containers: ''
+    //once reducers have been set up then we can use below
+    //to get details from global state
+    //and delete hardcoded data below
+    // ...props.details
+
+    firstName: 'Test',
+    lastName: 'Test',
+    businessName: 'Test Cafe',
+    addressStreet: '123 Test Street',
+    addressSuburb: 'Testfield',
+    addressCity: 'Testland',
+    product: 'Oil',
+    containers: 'Drum'
+
   })
 
-  // below function used for testing only
+  const history = useHistory()
+
+  //below function used for testing only
+  // can be deleted once we create and import updateDetails function
   function updateDetails(form) {
     console.log("Sending the following details to '../actions/clients':", form)
     return ({
@@ -35,6 +46,7 @@ export function EditDetails(props) {
   function handleClick(e) {
     e.preventDefault()
     props.dispatch(updateDetails(form))
+    history.push('/')
   }
 
   return (
@@ -47,7 +59,6 @@ export function EditDetails(props) {
           id='firstName'
           name='firstName'
           value={form.firstName}
-          placeholder='First Name'
           onChange={handleChange}
         ></input>
       </div>
@@ -58,7 +69,6 @@ export function EditDetails(props) {
           id='lastName'
           name='lastName'
           value={form.lastName}
-          placeholder='Last Name'
           onChange={handleChange}
         ></input>
       </div>
@@ -69,7 +79,6 @@ export function EditDetails(props) {
           id='businessName'
           name='businessName'
           value={form.businessName}
-          placeholder='Business Name'
           onChange={handleChange}
         ></input>
       </div>
@@ -80,7 +89,6 @@ export function EditDetails(props) {
           id='addressStreet'
           name='addressStreet'
           value={form.addressStreet}
-          placeholder='Street Address'
           onChange={handleChange}
         ></input>
       </div>
@@ -91,7 +99,6 @@ export function EditDetails(props) {
           id='addressSuburb'
           name='addressSuburb'
           value={form.addressSuburb}
-          placeholder='Suburb'
           onChange={handleChange}
         ></input>
       </div>
@@ -102,7 +109,6 @@ export function EditDetails(props) {
           id='addressCity'
           name='addressCity'
           value={form.addressCity}
-          placeholder='Town/City'
           onChange={handleChange}
         ></input>
       </div>
@@ -113,7 +119,6 @@ export function EditDetails(props) {
           id='product'
           name='product'
           value={form.product}
-          placeholder='Product'
           onChange={handleChange}
         ></input>
       </div>
@@ -124,7 +129,6 @@ export function EditDetails(props) {
           id='containers'
           name='containers'
           value={form.containers}
-          placeholder='Container'
           onChange={handleChange}
         ></input>
       </div>
