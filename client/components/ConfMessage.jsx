@@ -4,11 +4,11 @@ function ConfMessage (props) {
   return (
     <>
       <div>
-        <p>
-          Collection Confirmed! <br></br>
-          Your collection will be picked up within 48 hours. <br></br>
-          If you have any questions please call 0800 009 008. <br></br>
-        </p>
+        <p>Collection Confirmed!</p>
+
+        <p>Your collection will be picked up within 48 hours.</p>
+
+        <p>If you have any questions please call 0800 009 008.</p>
       </div>
     </>
   )
