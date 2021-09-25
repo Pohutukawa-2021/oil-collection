@@ -1,8 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Footer from './Footer'
+import { connect } from 'react-redux'
+import { addOrder } from '../api/clients'
 
 function CollectionRequest (props) {
-  const { businessName, address, city } = props
+  const [orderStatus, setOrderStatus] = useState({ activeOrder: false })
+
+  const { id, businessName, addressStreet, addressCity, product } = props.client
+
+  function addNewOrder () {
+    setOrderStatus({ activeOrder: true })
+    console.log(id, orderStatus)
+    props.dispatch(addOrder(id, orderStatus))
+  }
+
   return (
     <>
       <div>
@@ -11,11 +22,17 @@ function CollectionRequest (props) {
         <p>{businessName}</p>
 
         <h2>Your Address:</h2>
-        <p>{address}</p>
-        <p>{city}</p>
+        <p>{addressStreet}</p>
+        <p>{addressCity}</p>
 
-        <h2>for oil collection</h2>
-        <button>CLICK HERE</button>
+        <h2>for {product} collection</h2>
+        <button
+          onClick={addNewOrder}
+          className='button-primary'
+        >
+          CLICK HERE
+
+        </button>
 
       </div>
       <Footer/>
@@ -23,4 +40,10 @@ function CollectionRequest (props) {
   )
 }
 
-export default CollectionRequest
+function mapStateToProps (state) {
+  return {
+    client: state
+  }
+}
+
+export default connect(mapStateToProps)(CollectionRequest)

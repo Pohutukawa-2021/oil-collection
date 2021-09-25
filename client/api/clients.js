@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-export function getCustomerDetails (id) {
+export function getClientDetails (id) {
   return request.get('/api/v1/clients/' + id)
     .then(res => {
       return res.body

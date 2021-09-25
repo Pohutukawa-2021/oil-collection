@@ -1,41 +1,36 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { updateDetails } from '../actions/clients'
 
-//below not created yet
-// import { updateDetails } from '../actions/clients'
+function EditDetails (props) {
+  const {
+    id,
+    firstName,
+    lastName,
+    businessName,
+    addressStreet,
+    addressSuburb,
+    addressCity,
+    product,
+    containers
+  } = props.client
 
-export function EditDetails(props) {
   const [form, setForm] = useState({
-    //once reducers have been set up then we can use below
-    //to get details from global state
-    //and delete hardcoded data below
-    // ...props.details
-
-    firstName: 'Test',
-    lastName: 'Test',
-    businessName: 'Test Cafe',
-    addressStreet: '123 Test Street',
-    addressSuburb: 'Testfield',
-    addressCity: 'Testland',
-    product: 'Oil',
-    containers: 'Drum'
-
+    id,
+    firstName,
+    lastName,
+    businessName,
+    addressStreet,
+    addressSuburb,
+    addressCity,
+    product,
+    containers
   })
 
   const history = useHistory()
 
-  //below function used for testing only
-  // can be deleted once we create and import updateDetails function
-  function updateDetails(form) {
-    console.log("Sending the following details to '../actions/clients':", form)
-    return ({
-      type: "",
-      form
-    })
-  }
-
-  function handleChange(e) {
+  function handleChange (e) {
     const { name, value } = e.target
     setForm({
       ...form,
@@ -43,7 +38,7 @@ export function EditDetails(props) {
     })
   }
 
-  function handleClick(e) {
+  function handleClick (e) {
     e.preventDefault()
     props.dispatch(updateDetails(form))
     history.push('/')
@@ -142,12 +137,11 @@ export function EditDetails(props) {
       </button>
     </form>
   )
-
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
-    details: state.details
+    client: state
   }
 }
 
