@@ -8,10 +8,9 @@ export function getClientDetails (id) {
     .catch(errorHandler('GET', '/api/v1/clients'))
 }
 
-export function addOrder (id, orderStatus) {
-  console.log(id, orderStatus)
+export function addOrder (id) {
   return request.patch('/api/v1/clients/request/')
-    .send(id, orderStatus)
+    .send(id)
     .then(() => { return null })
     .catch(errorHandler('POST', '/api/v1/clients/request'))
 }

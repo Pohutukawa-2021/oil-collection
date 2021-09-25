@@ -1,7 +1,9 @@
 const connection = require('./connection')
 
 module.exports = {
-  getCustomerDetails
+  getCustomerDetails,
+  activateOrder,
+  updateCustomerDetails
 }
 
 function getCustomerDetails (id, db = connection) {
@@ -22,4 +24,32 @@ function getCustomerDetails (id, db = connection) {
       'order_active as orderActive'
     )
     .first()
+}
+
+function activateOrder (id, db = connection) {
+  return db('clients')
+    .where('id', id)
+    .update({
+      order_active: 1 // 0 is false, 1 is true
+    })
+    .then(() => getCustomerDetails(id, db))
+}
+
+function updateCustomerDetails (customerDetails, db = connection) {
+  const updateObject = {
+    first_name: customerDetails.first_name,
+    last_name: customerDetails.last_name,
+    business_name: customerDetails.business_name,
+    address_street: customerDetails.address_street,
+    address_suburb: customerDetails.address_suburb,
+    address_city: customerDetails.address_city,
+    product: customerDetails.product,
+    containers: customerDetails.containers
+  }
+  return db('clients')
+    .where('id', customerDetails.id)
+    .update(updateObject)
+    .then(() => {
+      return updateObject
+    })
 }
