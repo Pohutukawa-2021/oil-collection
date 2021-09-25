@@ -21,3 +21,32 @@ test('GET customer details by id', () => {
       return null
     })
 })
+
+test('SEND new request/order', () => {
+  return db.activateOrder(3, testDb)
+    .then(request => {
+      expect(request.orderActive).toBe(1)
+      return null
+    })
+})
+
+test('UPDATE customer details', () => {
+  const updateDetails = {
+    id: 2,
+    first_name: 'Zahira',
+    last_name: 'Champion',
+    business_name: 'CookSavvy',
+    address_street: '1A Lilac Hwy',
+    address_suburb: 'CBD',
+    address_city: 'Auckland',
+    product: 'fat',
+    containers: 'drum'
+  }
+  return db.updateCustomerDetails(updateDetails, testDb)
+    .then((details) => {
+      expect(details.first_name).toBe('Zahira')
+      expect(details.address_suburb).toBe('CBD')
+      expect(details.product).toBe('fat')
+      return null
+    })
+})

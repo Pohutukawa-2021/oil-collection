@@ -17,3 +17,17 @@ test('GET customer details returns all details', () => {
       return null
     })
 })
+
+test('UPDATE order active status', () => {
+  db.activateOrder = jest.fn()
+  db.activateOrder.mockImplementation(() => {
+    return Promise.resolve({ order_active: 1 })
+  })
+  return request(server)
+    .patch('/api/v1/clients/4/request')
+    .then((orderStatus) => {
+      expect(orderStatus.status).toBe(200)
+      expect(orderStatus.body.order_active).toBe(1)
+      return null
+    })
+})
