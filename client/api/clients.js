@@ -1,11 +1,19 @@
 import request from 'superagent'
 
-export function getCustomerDetails (id) {
+export function getClientDetails (id) {
   return request.get('/api/v1/clients/' + id)
     .then(res => {
       return res.body
     })
     .catch(errorHandler('GET', '/api/v1/clients'))
+}
+
+export function addOrder (id, orderStatus) {
+  console.log(id, orderStatus)
+  return request.patch('/api/v1/clients/request/')
+    .send(id, orderStatus)
+    .then(() => { return null })
+    .catch(errorHandler('POST', '/api/v1/clients/request'))
 }
 
 function errorHandler (method, route) {

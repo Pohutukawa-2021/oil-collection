@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import Footer from './Footer'
 import { connect } from 'react-redux'
-// import addOrder from '../api/clients'
+import { addOrder } from '../api/clients'
 
 function CollectionRequest (props) {
   const [orderStatus, setOrderStatus] = useState({ activeOrder: false })
 
-  // const { businessName, address, city } = props.details
+  const { id, businessName, addressStreet, addressCity, product } = props.client
 
   function addNewOrder () {
-    // addOrder(props.details)
     setOrderStatus({ activeOrder: true })
-    props.dispatch(addOrder(orderStatus))
+    console.log(id, orderStatus)
+    props.dispatch(addOrder(id, orderStatus))
   }
 
   return (
@@ -19,13 +19,13 @@ function CollectionRequest (props) {
       <div>
 
         <h2>Your Account:</h2>
-        {/* <p>{businessName}</p> */}
+        <p>{businessName}</p>
 
         <h2>Your Address:</h2>
-        {/* <p>{address}</p>
-        <p>{city}</p> */}
+        <p>{addressStreet}</p>
+        <p>{addressCity}</p>
 
-        <h2>for oil collection</h2>
+        <h2>for {product} collection</h2>
         <button
           onClick={addNewOrder}
           className='button-primary'
@@ -42,7 +42,7 @@ function CollectionRequest (props) {
 
 function mapStateToProps (state) {
   return {
-    details: state.details
+    client: state
   }
 }
 

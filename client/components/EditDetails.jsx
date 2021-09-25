@@ -1,28 +1,31 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-
-// import { updateDetails } from '../actions/clients'
+import { updateDetails } from '../actions/clients'
 
 function EditDetails (props) {
-  const [form, setForm] = useState({
-    firstName: '',
-    lastName: '',
-    businessName: '',
-    addressStreet: '',
-    addressSuburb: '',
-    addressCity: '',
-    product: '',
-    containers: ''
-  })
+  const {
+    id,
+    firstName,
+    lastName,
+    businessName,
+    addressStreet,
+    addressSuburb,
+    addressCity,
+    product,
+    containers
+  } = props.client
 
-  // below function used for testing only
-  function updateDetails (form) {
-    console.log("Sending the following details to '../actions/clients':", form)
-    return ({
-      type: '',
-      form
-    })
-  }
+  const [form, setForm] = useState({
+    id,
+    firstName,
+    lastName,
+    businessName,
+    addressStreet,
+    addressSuburb,
+    addressCity,
+    product,
+    containers
+  })
 
   function handleChange (e) {
     const { name, value } = e.target
@@ -142,7 +145,7 @@ function EditDetails (props) {
 
 function mapStateToProps (state) {
   return {
-    details: state.details
+    client: state
   }
 }
 
