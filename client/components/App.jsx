@@ -1,22 +1,26 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { Route } from 'react-router-dom'
 
+import Header from './Header'
 import CollectionRequest from './CollectionRequest'
-import EditDetails from './EditDetails'
-import Register from './Register'
 import SignIn from './SignIn'
+import Register from './Register'
+import EditDetails from './EditDetails'
+import ConfMessage from './ConfMessage'
+import Footer from './Footer'
 
-function App () {
+export default function App() {
   return (
-    <div className='app-container'>
-      <Route exact path='/' component={SignIn} />
-      <Route path='/details/update' component={EditDetails} />
-      <Route path='/request' component={CollectionRequest} />
-      {/* <Route path='' component={Register} />
-      <Route path='' component={Register} /> */}
-    </div>
+    <>
+      <Header />
+      <main className='app-container'>
+        <Route exact path='/' component={CollectionRequest} />
+        <Route path='/sign-in' component={SignIn} />
+        <Route path='/details/register' component={Register} />
+        <Route path='/details/update' component={EditDetails} />
+        <Route path='/confirmation' component={ConfMessage} />
+      </main>
+      <Footer />
+    </>
   )
 }
-
-export default connect()(App)
