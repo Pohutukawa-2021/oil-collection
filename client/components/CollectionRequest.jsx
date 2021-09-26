@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { addOrder } from '../api/clients'
 
 function CollectionRequest (props) {
@@ -7,8 +8,11 @@ function CollectionRequest (props) {
 
   const { id, businessName, addressStreet, addressCity, product } = props.client
 
+  const history = useHistory()
+
   function addNewOrder () {
     addOrder(id)
+    history.push('/confirmation')
   }
 
   return (
