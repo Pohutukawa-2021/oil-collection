@@ -1,4 +1,4 @@
-import { UPDATE_CLIENT_DETAILS } from '../actions/clients'
+import { UPDATE_CLIENT_DETAILS, ADD_TOKEN_DETAILS } from '../actions/clients'
 
 const initialUser = {
   id: 1,
@@ -17,18 +17,36 @@ function updateClients (state = initialUser, action) {
   switch (action.type) {
     case UPDATE_CLIENT_DETAILS:
       return updateClientHelper(state, action.details)
+    case ADD_TOKEN_DETAILS:
+      return authDetailHelper(state, action.details)
     default:
       return state
   }
 }
 
-function updateClientHelper (state, details) {
+function authDetailHelper (state, details) {
   const { auth0Id, email, token } = details
   return {
     ...state,
     auth0Id,
     email,
     token
+  }
+}
+
+function updateClientHelper (state, details) {
+  const { id, firstName, lastName, businessName, addressStreet, addressSuburb, addressCity, product, containers } = details
+  return {
+    ...state,
+    id,
+    firstName,
+    lastName,
+    businessName,
+    addressStreet,
+    addressSuburb,
+    addressCity,
+    product,
+    containers
   }
 }
 
