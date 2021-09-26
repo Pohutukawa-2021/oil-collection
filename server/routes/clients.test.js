@@ -3,9 +3,9 @@ const server = require('../server')
 const db = require('../db/clients')
 jest.mock('../db/clients')
 
-test('GET customer details returns all details', () => {
-  db.getCustomerDetails = jest.fn()
-  db.getCustomerDetails.mockImplementation(() => {
+test('GET Client details returns all details', () => {
+  db.getClientDetails = jest.fn()
+  db.getClientDetails.mockImplementation(() => {
     return Promise.resolve({ id: 123 })
   })
   return request(server)
@@ -32,9 +32,9 @@ test('UPDATE order active status', () => {
     })
 })
 
-test('UPDATE customer details', () => {
-  db.updateCustomerDetails = jest.fn()
-  db.updateCustomerDetails.mockImplementation(() => {
+test('UPDATE Client details', () => {
+  db.updateClientDetails = jest.fn()
+  db.updateClientDetails.mockImplementation(() => {
     return Promise.resolve({
       id: 2,
       first_name: 'Zahira',
