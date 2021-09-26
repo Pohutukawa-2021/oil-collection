@@ -12,8 +12,8 @@ beforeEach(() => {
   return testDb.seed.run()
 })
 
-test('GET customer details by id', () => {
-  return db.getCustomerDetails(3, testDb)
+test('GET Client details by id', () => {
+  return db.getClientDetails(3, testDb)
     .then(listDetails => {
       expect(listDetails.firstName).toBe('Don')
       expect(listDetails.addressSuburb).toBe('CBD')
@@ -30,7 +30,7 @@ test('SEND new request/order', () => {
     })
 })
 
-test('UPDATE customer details', () => {
+test('UPDATE Client details', () => {
   const updateDetails = {
     id: 2,
     first_name: 'Zahira',
@@ -42,7 +42,7 @@ test('UPDATE customer details', () => {
     product: 'fat',
     containers: 'drum'
   }
-  return db.updateCustomerDetails(updateDetails, testDb)
+  return db.updateClientDetails(updateDetails, testDb)
     .then((details) => {
       expect(details.first_name).toBe('Zahira')
       expect(details.address_suburb).toBe('CBD')
