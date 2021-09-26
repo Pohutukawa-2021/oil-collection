@@ -1,4 +1,8 @@
 @charset "utf-8";
-// 0 - TOOLS 
+// 01 - TOOLS 
 // *** CSS Resets, etc ***
 @use './01_tools/__tools.scss';
+
+// 02 - Base 
+// *** It includes basic styles to HTML tags like H1, H2, section, article, ul ***
+@use './02_base/__base.scss';
