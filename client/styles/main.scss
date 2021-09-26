@@ -3,6 +3,10 @@
 // *** CSS Resets, etc ***
 @use './01_tools/__tools.scss';
 
-// 02 - Base 
+// 02 - BASE 
 // *** It includes basic styles to HTML tags like H1, H2, section, article, ul ***
 @use './02_base/__base.scss';
+
+// 03 - LAYOUT 
+// *** Header, footer, reusable components classes ***
+@use './03_layout/_layout.scss';
