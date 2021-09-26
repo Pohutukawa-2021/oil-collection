@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { addOrder } from '../api/clients'
+import { addNewOrder } from '../actions/clients'
 
 function CollectionRequest (props) {
   // const [orderStatus, setOrderStatus] = useState({ activeOrder: false })
@@ -10,8 +10,8 @@ function CollectionRequest (props) {
 
   const history = useHistory()
 
-  function addNewOrder () {
-    addOrder(id)
+  function addOrder () {
+    props.dispatch(addNewOrder(id))
     history.push('/confirmation')
   }
 
@@ -28,7 +28,7 @@ function CollectionRequest (props) {
 
         <h2>for {product} collection</h2>
         <button
-          onClick={addNewOrder}
+          onClick={addOrder}
           className='button-primary'
         >
           CLICK HERE

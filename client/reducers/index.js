@@ -1,4 +1,4 @@
-import { UPDATE_CLIENT_DETAILS } from '../actions/clients'
+import { UPDATE_ORDER_ACTIVE_STATUS } from '../actions/clients'
 
 const initialUser = {
   id: 1,
@@ -9,15 +9,24 @@ const initialUser = {
   addressSuburb: 'CBD',
   addressCity: 'Auckland',
   product: 'oil',
-  containers: 'tank'
+  containers: 'tank',
+  orderActive: false
 }
 
 function updateClients (state = initialUser, action) {
   switch (action.type) {
-    case UPDATE_CLIENT_DETAILS:
-      return action.details
+    case UPDATE_ORDER_ACTIVE_STATUS:
+      return activeOrderHelper(state, action.orderStatus)
     default:
       return state
+  }
+}
+
+function activeOrderHelper (state, order) {
+  const { orderActive } = order
+  return {
+    ...state,
+    orderActive
   }
 }
 
