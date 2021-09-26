@@ -129,7 +129,7 @@ function EditDetails(props) {
       </div>
       <button
         type='button'
-        className='button-primary bold'
+        className='button-login-register'
         onClick={handleClick}
         data-testid='submitButton'
       >
