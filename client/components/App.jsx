@@ -13,7 +13,7 @@ export default function App() {
   return (
     <>
       <Header />
-      <main className='app-container'>
+      <main className='app-container light'>
         <Route exact path='/' component={CollectionRequest} />
         <Route path='/sign-in' component={SignIn} />
         <Route path='/details/register' component={Register} />

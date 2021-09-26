@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { updateDetails } from '../actions/clients'
 
-function EditDetails (props) {
+function EditDetails(props) {
   const {
     id,
     firstName,
@@ -30,7 +30,7 @@ function EditDetails (props) {
 
   const history = useHistory()
 
-  function handleChange (e) {
+  function handleChange(e) {
     const { name, value } = e.target
     setForm({
       ...form,
@@ -38,7 +38,7 @@ function EditDetails (props) {
     })
   }
 
-  function handleClick (e) {
+  function handleClick(e) {
     e.preventDefault()
     props.dispatch(updateDetails(form))
     history.push('/')
@@ -129,7 +129,7 @@ function EditDetails (props) {
       </div>
       <button
         type='button'
-        className='button-primary'
+        className='button-primary bold'
         onClick={handleClick}
         data-testid='submitButton'
       >
@@ -139,7 +139,7 @@ function EditDetails (props) {
   )
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
     client: state
   }
