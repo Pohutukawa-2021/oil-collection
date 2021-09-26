@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  entry: path.join(__dirname, './index.js'),
+  entry: [path.join(__dirname, './index.js'), path.join(__dirname, 'styles/main.scss')],
   output: {
     path: path.join(__dirname, '../server/public'),
     filename: 'bundle.js'
@@ -13,6 +13,14 @@ module.exports = {
         loader: 'babel-loader',
         test: /\.jsx?$/,
         exclude: /node_modules/
+      },
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
       }
     ]
   },

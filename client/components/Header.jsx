@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Header () {
+function Header() {
   return (
     <header>
-      <h1>OIL COLLECTION</h1>
+      <h1 className='bold'>OIL COLLECTION</h1>
     </header>
   )
 }
