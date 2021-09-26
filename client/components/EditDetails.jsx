@@ -108,12 +108,24 @@ function EditDetails (props) {
         ></input>
       </div>
       <div className="field">
-        <label htmlFor='product' className='form-label'>Product:</label>
+        <label htmlFor='product' className='form-label'>Oil</label>
         <input
           className='form-input'
+          type='radio'
           id='product'
           name='product'
-          value={form.product}
+          value='oil'
+          //   value={form.product}
+          onChange={handleChange}
+        ></input>
+        <label htmlFor='product' className='form-label'>Fat</label>
+        <input
+          className='form-input'
+          type='radio'
+          id='product'
+          name='product'
+          value='fat'
+          //   value={form.product}
           onChange={handleChange}
         ></input>
       </div>
