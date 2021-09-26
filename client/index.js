@@ -1,16 +1,20 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import { HashRouter as Router } from 'react-router-dom'
 import { Auth0Provider } from '@auth0/auth0-react'
+import thunk from 'redux-thunk'
 
 import reducers from './reducers'
 import App from './components/App'
 
-export const store = createStore(reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-)
+// export const store = createStore(reducers,
+//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// )
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+export const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)))
 
 document.addEventListener('DOMContentLoaded', () => {
   render(

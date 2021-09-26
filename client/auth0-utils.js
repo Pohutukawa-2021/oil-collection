@@ -1,15 +1,14 @@
-// import { setUser } from './actions/user'
+import { updateDetails } from './actions/clients'
 import { store } from './index'
 
 const emptyUser = {
   auth0Id: '',
   email: '',
-  name: '',
   token: ''
 }
 
 function saveUser (user = emptyUser) {
-  store.dispatch(setUser(user))
+  store.dispatch(updateDetails(user))
 }
 
 export async function cacheUser (useAuth0) {
@@ -17,7 +16,7 @@ export async function cacheUser (useAuth0) {
   if (isAuthenticated) {
     try {
       const token = await getAccessTokenSilently()
-      const userToSave = { auth0Id: user.sub, email: user.email, name: user.nickname, token }
+      const userToSave = { auth0Id: user.sub, email: user.email, token }
       saveUser(userToSave)
     } catch (err) {
       console.error(err)
