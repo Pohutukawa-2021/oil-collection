@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
     })
 })
 
-router.patch('/:id/request', (req, res) => {
+router.patch('/:id', (req, res) => {
   db.activateOrder(req.params.id)
     .then((request) => {
       res.status(200).json(request)
