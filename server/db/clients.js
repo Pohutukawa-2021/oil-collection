@@ -1,9 +1,58 @@
 const connection = require('./connection')
 
 module.exports = {
-  addUser,
-  getCustomerDetails,
-  activateOrder
+  getClientDetails,
+  activateOrder,
+  updateClientDetails,
+  addUser
+}
+
+function getClientDetails (id, db = connection) {
+  return db('clients')
+    .where('id', id)
+    .select(
+      'id',
+      'first_name as firstName',
+      'last_name as lastName',
+      'auth0_id as auth0Id',
+      'business_name as businessName',
+      'address_street as addressStreet',
+      'address_suburb as addressSuburb',
+      'address_city as addressCity',
+      'product',
+      'containers',
+      'price',
+      'order_active as orderActive'
+    )
+    .first()
+}
+
+function activateOrder (id, db = connection) {
+  return db('clients')
+    .where('id', id)
+    .update({
+      order_active: 1 // 0 is false, 1 is true
+    })
+    .then(() => getClientDetails(id, db))
+}
+
+function updateClientDetails (clientDetails, db = connection) {
+  const updateObject = {
+    first_name: clientDetails.first_name,
+    last_name: clientDetails.last_name,
+    business_name: clientDetails.business_name,
+    address_street: clientDetails.address_street,
+    address_suburb: clientDetails.address_suburb,
+    address_city: clientDetails.address_city,
+    product: clientDetails.product,
+    containers: clientDetails.containers
+  }
+  return db('clients')
+    .where('id', clientDetails.id)
+    .update(updateObject)
+    .then(() => {
+      return updateObject
+    })
 }
 
 function addUser (newUser, db = connection) {
@@ -32,33 +81,4 @@ function addUser (newUser, db = connection) {
 
       }
     })
-}
-
-function getCustomerDetails (id, db = connection) {
-  return db('clients')
-    .where('id', id)
-    .select(
-      'id',
-      'first_name as firstName',
-      'last_name as lastName',
-      'auth0_id as auth0Id',
-      'business_name as businessName',
-      'address_street as addressStreet',
-      'address_suburb as addressSuburb',
-      'address_city as addressCity',
-      'product',
-      'containers',
-      'price',
-      'order_active as orderActive'
-    )
-    .first()
-}
-
-function activateOrder (id, db = connection) {
-  return db('clients')
-    .where('id', id)
-    .update({
-      order_active: 1 // 0 is false, 1 is true
-    })
-    .then(() => getCustomerDetails(id, db))
 }

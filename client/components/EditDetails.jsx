@@ -1,30 +1,36 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { updateDetails } from '../actions/clients'
 
-// import { updateDetails } from '../actions/clients'
+function EditDetails (props) {
+  const {
+    id,
+    firstName,
+    lastName,
+    businessName,
+    addressStreet,
+    addressSuburb,
+    addressCity,
+    product,
+    containers
+  } = props.client
 
-export function EditDetails(props) {
   const [form, setForm] = useState({
-    firstName: '',
-    lastName: '',
-    businessName: '',
-    addressStreet: '',
-    addressSuburb: '',
-    addressCity: '',
-    product: '',
-    containers: ''
+    id,
+    firstName,
+    lastName,
+    businessName,
+    addressStreet,
+    addressSuburb,
+    addressCity,
+    product,
+    containers
   })
 
-  // below function used for testing only
-  function updateDetails(form) {
-    console.log("Sending the following details to '../actions/clients':", form)
-    return ({
-      type: "",
-      form
-    })
-  }
+  const history = useHistory()
 
-  function handleChange(e) {
+  function handleChange (e) {
     const { name, value } = e.target
     setForm({
       ...form,
@@ -32,9 +38,10 @@ export function EditDetails(props) {
     })
   }
 
-  function handleClick(e) {
+  function handleClick (e) {
     e.preventDefault()
     props.dispatch(updateDetails(form))
+    history.push('/')
   }
 
   return (
@@ -47,7 +54,6 @@ export function EditDetails(props) {
           id='firstName'
           name='firstName'
           value={form.firstName}
-          placeholder='First Name'
           onChange={handleChange}
         ></input>
       </div>
@@ -58,7 +64,6 @@ export function EditDetails(props) {
           id='lastName'
           name='lastName'
           value={form.lastName}
-          placeholder='Last Name'
           onChange={handleChange}
         ></input>
       </div>
@@ -69,7 +74,6 @@ export function EditDetails(props) {
           id='businessName'
           name='businessName'
           value={form.businessName}
-          placeholder='Business Name'
           onChange={handleChange}
         ></input>
       </div>
@@ -80,7 +84,6 @@ export function EditDetails(props) {
           id='addressStreet'
           name='addressStreet'
           value={form.addressStreet}
-          placeholder='Street Address'
           onChange={handleChange}
         ></input>
       </div>
@@ -91,7 +94,6 @@ export function EditDetails(props) {
           id='addressSuburb'
           name='addressSuburb'
           value={form.addressSuburb}
-          placeholder='Suburb'
           onChange={handleChange}
         ></input>
       </div>
@@ -102,18 +104,28 @@ export function EditDetails(props) {
           id='addressCity'
           name='addressCity'
           value={form.addressCity}
-          placeholder='Town/City'
           onChange={handleChange}
         ></input>
       </div>
       <div className="field">
-        <label htmlFor='product' className='form-label'>Product:</label>
+        <label htmlFor='product' className='form-label'>Oil</label>
         <input
           className='form-input'
+          type='radio'
           id='product'
           name='product'
-          value={form.product}
-          placeholder='Product'
+          value='oil'
+          //   value={form.product}
+          onChange={handleChange}
+        ></input>
+        <label htmlFor='product' className='form-label'>Fat</label>
+        <input
+          className='form-input'
+          type='radio'
+          id='product'
+          name='product'
+          value='fat'
+          //   value={form.product}
           onChange={handleChange}
         ></input>
       </div>
@@ -124,7 +136,6 @@ export function EditDetails(props) {
           id='containers'
           name='containers'
           value={form.containers}
-          placeholder='Container'
           onChange={handleChange}
         ></input>
       </div>
@@ -138,12 +149,11 @@ export function EditDetails(props) {
       </button>
     </form>
   )
-
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
-    details: state.details
+    client: state
   }
 }
 

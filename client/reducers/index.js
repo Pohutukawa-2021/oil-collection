@@ -1,7 +1,24 @@
-import { combineReducers } from 'redux'
+import { UPDATE_CLIENT_DETAILS } from '../actions/clients'
 
-import words from './words'
+const initialUser = {
+  id: 1,
+  firstName: 'Jared',
+  lastName: 'Pinfold',
+  businessName: 'JP Bakery',
+  addressStreet: '3 Eda st',
+  addressSuburb: 'CBD',
+  addressCity: 'Auckland',
+  product: 'oil',
+  containers: 'tank'
+}
 
-export default combineReducers({
-  words
-})
+function updateClients (state = initialUser, action) {
+  switch (action.type) {
+    case UPDATE_CLIENT_DETAILS:
+      return action.details
+    default:
+      return state
+  }
+}
+
+export default updateClients
