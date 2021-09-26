@@ -1,4 +1,4 @@
-import { addAuth } from './actions/clients'
+import { testfunction } from './actions/clients'
 import { store } from './index'
 
 const emptyUser = {
@@ -8,7 +8,7 @@ const emptyUser = {
 }
 
 function saveUser (user = emptyUser) {
-  store.dispatch(addAuth(user))
+  store.dispatch(testfunction(user))
 }
 
 export async function cacheUser (useAuth0) {

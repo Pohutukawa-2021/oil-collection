@@ -64,7 +64,7 @@ exports.seed = (knex) => {
           id: 5,
           first_name: 'Ahmed',
           last_name: 'Saviour',
-          auth0_id: '',
+          auth0_id: 'auth0|614bc653d42a69006aa03751',
           business_name: 'Kwait Deli',
           address_street: '37 Helper Hwy',
           address_suburb: 'Chartwell',

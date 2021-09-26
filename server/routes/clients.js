@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
 })
 
 router.get('/:id', checkJwt, (req, res) => {
-  db.getCustomerDetails(req.params.id)
+  db.getClientDetails(req.params.id)
     .then(results => {
       res.json(results)
       return null

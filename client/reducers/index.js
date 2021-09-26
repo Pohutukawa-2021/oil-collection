@@ -16,7 +16,7 @@ function updateClients (state = initialUser, action) {
   // const details = action.details
   switch (action.type) {
     case UPDATE_CLIENT_DETAILS:
-      return updateClientHelper(state, action.details)
+      return action.details
     case ADD_TOKEN_DETAILS:
       return authDetailHelper(state, action.details)
     default:
