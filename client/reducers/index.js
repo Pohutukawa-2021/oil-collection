@@ -16,7 +16,7 @@ function updateClients (state = initialUser, action) {
   // const details = action.details
   switch (action.type) {
     case UPDATE_CLIENT_DETAILS:
-      return action.details
+      return updateClientHelper(state, action.details)
     case ADD_TOKEN_DETAILS:
       return authDetailHelper(state, action.details)
     default:
@@ -35,7 +35,7 @@ function authDetailHelper (state, details) {
 }
 
 function updateClientHelper (state, details) {
-  const { id, firstName, lastName, businessName, addressStreet, addressSuburb, addressCity, product, containers } = details
+  const { id, firstName, lastName, businessName, addressStreet, addressSuburb, addressCity, product, containers, price, orderActive } = details
   return {
     ...state,
     id,
@@ -46,7 +46,9 @@ function updateClientHelper (state, details) {
     addressSuburb,
     addressCity,
     product,
-    containers
+    containers,
+    price,
+    orderActive
   }
 }
 
