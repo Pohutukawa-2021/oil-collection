@@ -1,17 +1,18 @@
-import React, { useState } from 'react'
-import Footer from './Footer'
+import React from 'react'
 import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { addOrder } from '../api/clients'
 
 function CollectionRequest(props) {
-  const [orderStatus, setOrderStatus] = useState({ activeOrder: false })
+  // const [orderStatus, setOrderStatus] = useState({ activeOrder: false })
 
   const { id, businessName, addressStreet, addressCity, product } = props.client
 
+  const history = useHistory()
+
   function addNewOrder() {
-    setOrderStatus({ activeOrder: true })
-    console.log(id, orderStatus)
-    props.dispatch(addOrder(id, orderStatus))
+    addOrder(id)
+    history.push('/confirmation')
   }
 
   return (
@@ -35,7 +36,6 @@ function CollectionRequest(props) {
         </button>
 
       </div>
-      <Footer />
     </>
   )
 }

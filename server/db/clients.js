@@ -1,13 +1,13 @@
 const connection = require('./connection')
 
 module.exports = {
-  getCustomerDetails,
+  getClientDetails,
   activateOrder,
-  updateCustomerDetails,
+  updateClientDetails,
   addUser
 }
 
-function getCustomerDetails (id, db = connection) {
+function getClientDetails (id, db = connection) {
   return db('clients')
     .where('id', id)
     .select(
@@ -33,22 +33,22 @@ function activateOrder (id, db = connection) {
     .update({
       order_active: 1 // 0 is false, 1 is true
     })
-    .then(() => getCustomerDetails(id, db))
+    .then(() => getClientDetails(id, db))
 }
 
-function updateCustomerDetails (customerDetails, db = connection) {
+function updateClientDetails (clientDetails, db = connection) {
   const updateObject = {
-    first_name: customerDetails.first_name,
-    last_name: customerDetails.last_name,
-    business_name: customerDetails.business_name,
-    address_street: customerDetails.address_street,
-    address_suburb: customerDetails.address_suburb,
-    address_city: customerDetails.address_city,
-    product: customerDetails.product,
-    containers: customerDetails.containers
+    first_name: clientDetails.first_name,
+    last_name: clientDetails.last_name,
+    business_name: clientDetails.business_name,
+    address_street: clientDetails.address_street,
+    address_suburb: clientDetails.address_suburb,
+    address_city: clientDetails.address_city,
+    product: clientDetails.product,
+    containers: clientDetails.containers
   }
   return db('clients')
-    .where('id', customerDetails.id)
+    .where('id', clientDetails.id)
     .update(updateObject)
     .then(() => {
       return updateObject
