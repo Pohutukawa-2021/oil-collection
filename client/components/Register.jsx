@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function Register () {
+function Register() {
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -13,7 +13,7 @@ function Register () {
     // password: ''
   })
 
-  function handleChange (e) {
+  function handleChange(e) {
     const { name, value } = e.target
     setForm({
       ...form,
@@ -21,7 +21,7 @@ function Register () {
     })
   }
 
-  function handleClick (e) {
+  function handleClick(e) {
     e.preventDefault()
     // Auth0 stuff goes here? --James
   }
@@ -118,7 +118,7 @@ function Register () {
             placeholder="A minimun of 6 characters"
           />
         </label>
-        <button type='button' onClick={handleClick}>Register</button>
+        <button type='button' className='bold' onClick={handleClick}>Register</button>
       </form>
     </div>
   )

@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Footer () {
+function Footer() {
   return (
-    <footer>
+    <footer className='footer light'>
       <p>email us: email@example.com</p>
       <p>call us: 0800 008009</p>
     </footer>
