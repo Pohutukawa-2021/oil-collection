@@ -13,6 +13,7 @@ export function addOrder (id) {
     .send(id)
     .then(res => { return res.body })
     .catch(errorHandler('PATCH', '/api/v1/clients')
+    )
 }
 
 export function addUser (user) {
