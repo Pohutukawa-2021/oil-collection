@@ -29,7 +29,7 @@ function CollectionRequest (props) {
         <h2>for {product} collection</h2>
         <button
           onClick={addOrder}
-          className='button-primary'
+          className='button-login-register'
         >
           CLICK HERE
 
