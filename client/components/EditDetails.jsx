@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { updateDetails } from '../actions/clients'
+import { registerDetails } from '../actions/clients'
 
-function EditDetails(props) {
+function EditDetails (props) {
   const {
     id,
     firstName,
@@ -13,7 +13,10 @@ function EditDetails(props) {
     addressSuburb,
     addressCity,
     product,
-    containers
+    containers,
+    auth0Id,
+    token,
+    email
   } = props.client
 
   const [form, setForm] = useState({
@@ -25,12 +28,15 @@ function EditDetails(props) {
     addressSuburb,
     addressCity,
     product,
-    containers
+    containers,
+    auth0Id,
+    token,
+    email
   })
 
   const history = useHistory()
 
-  function handleChange(e) {
+  function handleChange (e) {
     const { name, value } = e.target
     setForm({
       ...form,
@@ -38,9 +44,9 @@ function EditDetails(props) {
     })
   }
 
-  function handleClick(e) {
+  function handleClick (e) {
     e.preventDefault()
-    props.dispatch(updateDetails(form))
+    props.dispatch(registerDetails(form))
     history.push('/')
   }
 
@@ -151,7 +157,7 @@ function EditDetails(props) {
   )
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     client: state
   }
