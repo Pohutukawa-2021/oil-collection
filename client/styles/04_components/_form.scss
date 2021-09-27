@@ -1,3 +1,15 @@
+.field {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.field > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .form-input {
     width: 50%;
     padding: 12px 20px;
@@ -11,9 +23,7 @@
 }
 
 .form-input[type=radio] {
-    width: initial;
-    padding: 5px 10px;
-    margin: 1px 5px;
+    margin: 10px 15px;
 }
 
 .form-input:focus {
