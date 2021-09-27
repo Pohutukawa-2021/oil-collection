@@ -16,8 +16,9 @@ export function addOrder (id) {
     .catch(errorHandler('PATCH', '/api/v1/clients'))
 }
 
-export function addUser (user) {
+export function addUser (user, token) {
   return request.post('/api/v1/clients')
+    .set('authorization', `Bearer ${token}`)
     .send(user)
     .then(res => {
       return res.body
