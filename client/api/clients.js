@@ -26,6 +26,7 @@ export function addUser (user) {
 }
 
 export function updateClientDetails (clientDetails) {
+  console.log(clientDetails.id)
   return request.patch('api/v1/clients/' + clientDetails.id + '/update')
     .send(clientDetails)
     .then(res => { return res.body })

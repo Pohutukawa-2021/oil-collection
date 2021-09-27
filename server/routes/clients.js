@@ -56,6 +56,7 @@ router.patch('/:id', (req, res) => {
 })
 
 router.patch('/:id/update', (req, res) => {
+  console.log(req.body)
   const updateDetails = req.body
   db.updateClientDetails(updateDetails)
     .then((update) => {
