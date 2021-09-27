@@ -9,7 +9,7 @@ module.exports = {
 
 function getClientDetails (id, db = connection) {
   return db('clients')
-    .where('id', id)
+    .where('auth0_id', id)
     .select(
       'id',
       'first_name as firstName',
@@ -29,7 +29,7 @@ function getClientDetails (id, db = connection) {
 
 function activateOrder (id, db = connection) {
   return db('clients')
-    .where('id', id)
+    .where('auth0_id', id)
     .update({
       order_active: 1 // 0 is false, 1 is true
     })

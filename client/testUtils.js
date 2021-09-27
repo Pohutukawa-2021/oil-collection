@@ -6,10 +6,10 @@ import { render } from '@testing-library/react'
 
 import reducer from './reducers'
 
-export function renderWithRedux(
-  //component
+export function renderWithRedux (
+  // component
   ui,
-  //options
+  // options
   {
     initialEntries = ['/'],
     route = '/',
