@@ -24,7 +24,7 @@ test('UPDATE order active status', () => {
     return Promise.resolve({ order_active: 1 })
   })
   return request(server)
-    .patch('/api/v1/clients/4/request')
+    .patch('/api/v1/clients/4')
     .then((orderStatus) => {
       expect(orderStatus.status).toBe(200)
       expect(orderStatus.body.order_active).toBe(1)
