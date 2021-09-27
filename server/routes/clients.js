@@ -1,10 +1,23 @@
 const express = require('express')
 
 const db = require('../db/clients')
+const { checkJwt } = require('../auth0')
 
 const router = express.Router()
 
 module.exports = router
+
+router.post('/', (req, res) => {
+  const newUser = req.body
+  db.addUser(newUser)
+    .then(() => {
+      res.sendStatus(201)
+      return null
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message })
+    })
+})
 
 // GET /api/v1/clients/:id
 
@@ -20,7 +33,7 @@ router.post('/', (req, res) => {
     })
 })
 
-router.get('/:id', (req, res) => {
+router.get('/:id', checkJwt, (req, res) => {
   db.getClientDetails(req.params.id)
     .then(results => {
       res.json(results)
