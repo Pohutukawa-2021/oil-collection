@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Work+Sans:ital,wght@0,900;1,900&display=swap');
+
+.button-login-register {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 800;
+    padding: 15px 32px;
+    border-radius: 50%;
+    font-size: 20px;
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #DEDB9B;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    // outline-offset: 10px;
+    // display: inline-block
+}
+
+.button-login-register a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.button-login-register a:hover {
+    transition-duration: 0.5s;
+    background-color: #DEDB9B; 
+    color: #000000;
+}
+
+.button-login-register:hover {
+    background-color: #DEDB9B; 
+    color: #000000;
+}

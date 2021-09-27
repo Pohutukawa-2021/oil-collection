@@ -118,7 +118,7 @@ function Register() {
             placeholder="A minimun of 6 characters"
           />
         </label>
-        <button type='button' className='bold' onClick={handleClick}>Register</button>
+        <button type='button' className='button-login-register' onClick={handleClick}>Register</button>
       </form>
     </div>
   )
