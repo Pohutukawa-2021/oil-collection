@@ -8,6 +8,7 @@ import EditDetails from './EditDetails'
 import Register from './Register'
 import { cacheUser } from '../auth0-utils'
 import Nav from './Nav'
+import NotNav from './NotNav'
 import SignIn from './SignIn'
 import ConfMessage from './ConfMessage'
 import Footer from './Footer'
@@ -17,8 +18,9 @@ export default function App () {
   return (
     <>
       <Header />
+      <Nav />
       <main className='app-container light'>
-        <Route exact path='/' component={Nav} />
+        {/* <Route exact path='/' component={NotNav} /> */}
         <Route exact path='/' component={CollectionRequest} />
         <Route path='/sign-in' component={SignIn} />
         <Route path='/details/update' component={EditDetails} />

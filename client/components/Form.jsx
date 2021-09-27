@@ -111,7 +111,10 @@ function Form (props) {
             value='oil'
             //   value={form.product}
             onChange={handleChange}
+            checked={true}
           ></input>
+        </div>
+        <div className="field">
           <label htmlFor='product' className='form-label'>Fat</label>
           <input
             className='form-input'
@@ -136,7 +139,7 @@ function Form (props) {
       </div>
       <button
         type='button'
-        className='button-primary bold'
+        className='button-login-register'
         onClick={handleSubmit}
         data-testid='submitButton'
       >
