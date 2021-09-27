@@ -1,4 +1,4 @@
-import { UPDATE_CLIENT_DETAILS, ADD_TOKEN_DETAILS } from '../actions/clients'
+import { UPDATE_CLIENT_DETAILS, ADD_TOKEN_DETAILS, UPDATE_ORDER_ACTIVE_STATUS } from '../actions/clients'
 
 const initialUser = {
   id: 1,
@@ -9,18 +9,29 @@ const initialUser = {
   addressSuburb: 'CBD',
   addressCity: 'Auckland',
   product: 'oil',
-  containers: 'tank'
+  containers: 'tank',
+  orderActive: false
 }
 
 function updateClients (state = initialUser, action) {
   // const details = action.details
   switch (action.type) {
+    case UPDATE_ORDER_ACTIVE_STATUS:
+      return activeOrderHelper(state, action.orderStatus)
     case UPDATE_CLIENT_DETAILS:
       return updateClientHelper(state, action.details)
     case ADD_TOKEN_DETAILS:
       return authDetailHelper(state, action.details)
     default:
       return state
+  }
+}
+
+function activeOrderHelper (state, order) {
+  const { orderActive } = order
+  return {
+    ...state,
+    orderActive
   }
 }
 
