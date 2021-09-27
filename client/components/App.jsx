@@ -13,14 +13,14 @@ import SignIn from './SignIn'
 import ConfMessage from './ConfMessage'
 import Footer from './Footer'
 
-export default function App() {
+export default function App () {
   cacheUser(useAuth0)
   return (
     <>
       <Header />
       <Nav />
       <main className='app-container light'>
-        <Route exact path='/' component={NotNav} />
+        {/* <Route exact path='/' component={NotNav} /> */}
         <Route exact path='/' component={CollectionRequest} />
         <Route path='/sign-in' component={SignIn} />
         <Route path='/details/update' component={EditDetails} />
