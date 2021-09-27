@@ -136,7 +136,7 @@ function Form (props) {
       </div>
       <button
         type='button'
-        className='button-primary bold'
+        className='button-login-register'
         onClick={handleSubmit}
         data-testid='submitButton'
       >
