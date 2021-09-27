@@ -6,12 +6,12 @@ import { addNewOrder } from '../actions/clients'
 function CollectionRequest (props) {
   // const [orderStatus, setOrderStatus] = useState({ activeOrder: false })
 
-  const { id, businessName, addressStreet, addressCity, product } = props.client
+  const { auth0Id, businessName, addressStreet, addressCity, product } = props.client
 
   const history = useHistory()
 
   function addOrder () {
-    props.dispatch(addNewOrder(id))
+    props.dispatch(addNewOrder(auth0Id))
     history.push('/confirmation')
   }
 

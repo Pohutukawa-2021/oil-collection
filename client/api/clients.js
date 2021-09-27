@@ -1,7 +1,8 @@
 import request from 'superagent'
 
-export function getClientDetails (id) {
+export function getClientDetails (id, token) {
   return request.get('/api/v1/clients/' + id)
+    .set('authorization', `Bearer ${token}`)
     .then(res => {
       return res.body
     })
