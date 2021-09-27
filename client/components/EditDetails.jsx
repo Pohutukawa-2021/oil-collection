@@ -8,7 +8,13 @@ function EditDetails (props) {
   const history = useHistory()
 
   function handleClick (form) {
-    props.dispatch(updateDetails(form))
+    const client = {
+      ...form,
+      auth0Id: props.client.auth0Id,
+      token: props.client.token,
+      email: props.client.email
+    }
+    props.dispatch(updateDetails(client))
     history.push('/')
   }
 
