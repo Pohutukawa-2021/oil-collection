@@ -1,0 +1,26 @@
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 1rem;
+    margin-right: 1rem;
+
+    &__link {
+        color: #171738;
+        padding: 0 1rem;
+        text-decoration: none;
+        line-height: 2.8rem;
+
+        &:hover {
+            color: lighten(#171738, 30%)
+        }
+
+        &:active {
+            color: #9395d3;
+
+            &:hover {
+                color: lighten(#9395d3, 20%)
+            }
+        }
+    }
+}
