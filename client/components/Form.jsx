@@ -100,7 +100,10 @@ function Form (props) {
             value='oil'
             //   value={form.product}
             onChange={handleChange}
+            checked="true"
           ></input>
+        </div>
+        <div className="field">
           <label htmlFor='product' className='form-label'>Fat</label>
           <input
             className='form-input'
