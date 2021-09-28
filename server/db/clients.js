@@ -56,15 +56,19 @@ function updateClientDetails (clientDetails, db = connection) {
 }
 
 function addUser (newUser, db = connection) {
-  const { firstName, lastName, businessName, address, suburb, city, product } = newUser
+  const { firstName, lastName, businessName, addressStreet, addressSuburb, addressCity, product, auth0Id, containers, price } = newUser
   const addNewUser = {
     first_name: firstName,
     last_name: lastName,
     business_name: businessName,
-    address_street: address,
-    address_suburb: suburb,
-    address_city: city,
-    product: product
+    address_street: addressStreet,
+    address_suburb: addressSuburb,
+    address_city: addressCity,
+    product: product,
+    containers,
+    auth0_id: auth0Id,
+    order_active: false,
+    price
   }
   return db('clients')
     .insert(addNewUser)
