@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { updateDetails } from '../actions/clients'
 import Form from './Form'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import Nav from './Nav'
 
 function EditDetails (props) {
   const history = useHistory()
@@ -21,6 +22,7 @@ function EditDetails (props) {
 
   return (
     <>
+      <Nav/>
       <IfAuthenticated>
         <Form submitForm={handleClick} formData={props.client}/>
       </IfAuthenticated>

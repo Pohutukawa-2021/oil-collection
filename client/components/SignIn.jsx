@@ -5,6 +5,10 @@ import { getLoginFn, getRegisterFn } from '../auth0-utils'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { connect } from 'react-redux'
 
+const backgroundImage = {
+  backgroundImage: 'url("../Oil-Collection-SignIn.png")'
+}
+
 function SignIn (props) {
   const login = getLoginFn(useAuth0)
   // const logout = getLogoutFn(useAuth0)
@@ -26,8 +30,10 @@ function SignIn (props) {
   }
   return (
     <>
+
       <IfNotAuthenticated>
         <div>
+          <div className='logo-homePage' style={backgroundImage}></div>
           <button className='button-login-register' onClick={handleLogin}>Sign in</button> {/* Link to Auth0? */}
           <button className='button-login-register' onClick={handleRegister}><Link to='/register'>Register</Link></button>
         </div>

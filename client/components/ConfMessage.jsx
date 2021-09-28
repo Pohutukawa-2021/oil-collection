@@ -1,10 +1,12 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import Nav from './Nav'
 
 function ConfMessage (props) {
   return (
     <>
+      <Nav/>
       <div>
         <IfAuthenticated>
           <p>Collection Confirmed!</p>
