@@ -26,9 +26,9 @@ export function addUser (user, token) {
     .catch(errorHandler('POST', '/api/v1/clients'))
 }
 
-export function updateClientDetails (clientDetails) {
-  console.log(clientDetails.id)
-  return request.patch('api/v1/clients/' + clientDetails.id + '/update')
+export function updateClientDetails (clientDetails, token) {
+  console.log(clientDetails.auth0Id)
+  return request.patch('api/v1/clients/' + clientDetails.auth0Id + '/update')
     .send(clientDetails)
     .then(res => { return res.body })
     .catch(errorHandler('PATCH', '/api/v1/clients/:id/update'))

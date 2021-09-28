@@ -1,4 +1,4 @@
-import { addOrder, addUser, getClientDetails } from '../api/clients'
+import { addOrder, addUser, getClientDetails, updateClientDetails } from '../api/clients'
 
 export const UPDATE_CLIENT_DETAILS = 'UPDATE_CLIENT_DETAILS'
 export const ADD_TOKEN_DETAILS = 'ADD_TOKEN_DETAILS'
@@ -64,6 +64,18 @@ export function testfunction (user) {
 export function registerDetails (user) {
   return dispatch => {
     addUser(user, user.token)
+      .then(() => {
+        console.log(user)
+        dispatch(updateDetails(user))
+        return null
+      })
+      .catch(err => console.error(err))
+  }
+}
+
+export function editDetails (user) {
+  return dispatch => {
+    updateClientDetails(user, user.token)
       .then(() => {
         dispatch(updateDetails(user))
         return null
