@@ -4,30 +4,29 @@ import { getLoginFn, getLogoutFn, getRegisterFn } from '../auth0-utils'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { connect } from 'react-redux'
 
-function NotNav(props) {
+function NotNav (props) {
   // const { user } = props
   const login = getLoginFn(useAuth0)
   const logout = getLogoutFn(useAuth0)
   const register = getRegisterFn(useAuth0)
 
-  function handleLogin(event) {
+  function handleLogin (event) {
     event.preventDefault()
     login()
   }
 
-  function handleLogoff(event) {
+  function handleLogoff (event) {
     event.preventDefault()
     logout()
   }
 
-  function handleRegister(event) {
+  function handleRegister (event) {
     event.preventDefault()
     register()
   }
 
   return (
     <nav className='not-nav'>
-      <h1 className='logo'>Full-stack Boilerplate with Auth0</h1>
       <section className='nav-item'>
         <IfAuthenticated>
           {/* <p>Hello, {user.name}</p> */}
@@ -49,7 +48,7 @@ function NotNav(props) {
   )
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     user: state.user
   }

@@ -1,26 +1,23 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { registerDetails } from '../actions/clients'
-
+import { Redirect } from 'react-router-dom'
+import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import Form from './Form'
 
 function Register (props) {
-  const history = useHistory()
-
-  function handleClick (form) {
-    const client = {
-      ...form,
-      auth0Id: props.client.auth0Id,
-      token: props.client.token,
-      email: props.client.email
-    }
-    props.dispatch(registerDetails(client))
-    history.push('/')
+  function handleClick () {
+    console.log('hello')
     // Auth0 stuff goes here? --James
   }
   return (
-    <Form submitForm={handleClick} formData={props.client}/>
+    <>
+      <IfAuthenticated>
+        <Form submitForm={handleClick}/>
+      </IfAuthenticated>
+      <IfNotAuthenticated>
+        <Redirect to={{ pathname: '/', state: { from: props.location } }}/>
+      </IfNotAuthenticated>
+    </>
   )
 }
 
