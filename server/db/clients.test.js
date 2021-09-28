@@ -32,7 +32,7 @@ test('SEND new request/order', () => {
 
 test('UPDATE Client details', () => {
   const updateDetails = {
-    id: 2,
+    id: 'auth0|614bc653d42a69006aa03751',
     first_name: 'Zahira',
     last_name: 'Champion',
     business_name: 'CookSavvy',
