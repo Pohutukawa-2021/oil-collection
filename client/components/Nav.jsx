@@ -35,7 +35,7 @@ function Nav (props) {
       <Link className='logo-link' to="/"><div className='logo' style={backgroundImage}></div></Link>
       <section className='nav-item'>
         <IfAuthenticated>
-          {/* <p>Hello, {user.name}</p> */}
+          <p>Hello, {props.user.firstName}</p>
           <section className='sign'>
             <a href='/' onClick={handleLogoff} className='nav__link'>Log out</a>
           </section>
@@ -56,7 +56,7 @@ function Nav (props) {
 
 function mapStateToProps (state) {
   return {
-    user: state.user
+    user: state
   }
 }
 

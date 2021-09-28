@@ -3,7 +3,7 @@ import { UPDATE_CLIENT_DETAILS, ADD_TOKEN_DETAILS, UPDATE_ORDER_ACTIVE_STATUS } 
 const initialUser = {
 }
 
-function updateClients (state = [], action) {
+function updateClients (state = initialUser, action) {
   // const details = action.details
   switch (action.type) {
     case UPDATE_ORDER_ACTIVE_STATUS:

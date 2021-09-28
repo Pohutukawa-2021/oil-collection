@@ -38,20 +38,20 @@ function activateOrder (id, db = connection) {
 
 function updateClientDetails (clientDetails, db = connection) {
   const updateObject = {
-    first_name: clientDetails.first_name,
-    last_name: clientDetails.last_name,
-    business_name: clientDetails.business_name,
-    address_street: clientDetails.address_street,
-    address_suburb: clientDetails.address_suburb,
-    address_city: clientDetails.address_city,
+    first_name: clientDetails.firstName,
+    last_name: clientDetails.lastName,
+    business_name: clientDetails.businessName,
+    address_street: clientDetails.addressStreet,
+    address_suburb: clientDetails.addressSuburb,
+    address_city: clientDetails.addressCity,
     product: clientDetails.product,
     containers: clientDetails.containers
   }
   return db('clients')
-    .where('id', clientDetails.id)
+    .where('auth0_id', clientDetails.auth0Id)
     .update(updateObject)
     .then(() => {
-      return updateObject
+      return null
     })
 }
 
@@ -72,17 +72,7 @@ function addUser (newUser, db = connection) {
   }
   return db('clients')
     .insert(addNewUser)
-    .then(id => {
-      return {
-        id: id,
-        firstName,
-        lastName,
-        businessName,
-        addressStreet,
-        addressSuburb,
-        addressCity,
-        product
-
-      }
+    .then(() => {
+      return null
     })
 }

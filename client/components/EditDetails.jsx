@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { updateDetails } from '../actions/clients'
+import { editDetails } from '../actions/clients'
 import Form from './Form'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import Nav from './Nav'
@@ -16,7 +16,7 @@ function EditDetails (props) {
       token: props.client.token,
       email: props.client.email
     }
-    props.dispatch(updateDetails(client))
+    props.dispatch(editDetails(client))
     history.push('/')
   }
 

@@ -35,7 +35,7 @@ function SignIn (props) {
         <div>
           <div className='logo-homePage' style={backgroundImage}></div>
           <button className='button-login-register' onClick={handleLogin}>Sign in</button> {/* Link to Auth0? */}
-          <button className='button-login-register' onClick={handleRegister}><Link to='/register'>Register</Link></button>
+          <button className='button-login-register' onClick={handleRegister}>Register</button>
         </div>
       </IfNotAuthenticated>
       <IfAuthenticated>

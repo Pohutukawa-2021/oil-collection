@@ -26,9 +26,8 @@ export function addUser (user, token) {
     .catch(errorHandler('POST', '/api/v1/clients'))
 }
 
-export function updateClientDetails (clientDetails) {
-  console.log(clientDetails.id)
-  return request.patch('api/v1/clients/' + clientDetails.id + '/update')
+export function updateClientDetails (clientDetails, token) {
+  return request.patch('api/v1/clients/' + clientDetails.auth0Id + '/update')
     .send(clientDetails)
     .then(res => { return res.body })
     .catch(errorHandler('PATCH', '/api/v1/clients/:id/update'))
@@ -36,6 +35,7 @@ export function updateClientDetails (clientDetails) {
 
 function errorHandler (method, route) {
   return (err) => {
+    console.log(err)
     if (err.message === 'Not Found') {
       throw Error(`Error: You need to implement an API route for ${method} ${route}`)
     } else {
