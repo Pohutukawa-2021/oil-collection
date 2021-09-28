@@ -1,15 +1,21 @@
-.logo {
-    color: #171738;
-    font-family: 'Work Sans', sans-serif;
-    font-size: 2rem;
-    font-weight: 900;
-    text-decoration: none;
-    line-height: 1.4em;
-    padding: 0 1.2rem;
-    text-transform: uppercase;
+* {
+    box-sizing: border-box;
+}
 
-    &:hover {
-        color: lighten(#171738, 10%);
-        text-decoration: none;
-    }
+.logo-link {
+    display: flex;
+}
+
+.logo {
+    width: 140px;
+    padding-top: 100%;
+    background-size: contain;
+    position: relative;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.nav-link {
+    list-style: none;
+    display: flex;
 }
