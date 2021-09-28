@@ -12,20 +12,18 @@ test('The correct header is displayed', () => {
   expect(header.textContent).toMatch('Update your details below')
 })
 
-test('Input fields display pre-populated data', () => {
+test('Input fields display pre-populated data', async () => {
   const props = {
-    details: {
-      firstName: 'Test',
-      lastName: 'Test',
-      businessName: 'Test Cafe',
-      addressStreet: '123 Test Street',
-      addressSuburb: 'Testfield',
-      addressCity: 'Testland',
-      product: 'Oil',
-      containers: 'Drum'
-    }
+    firstName: '',
+    lastName: '',
+    businessName: 'test',
+    addressStreet: '',
+    addressSuburb: '',
+    addressCity: '',
+    product: '',
+    containers: ''
   }
-  renderWithRedux(<EditDetails props={props} />)
-  const input = screen.getByRole('textbox', { name: 'Business Name:' })
-  expect(input).toHaveAttribute('value', 'Test Cafe')
+  renderWithRedux(<EditDetails />, { initialState: props })
+  const input = await screen.findByRole('textbox', { name: 'Business Name:' })
+  expect(input).toHaveAttribute('value', 'test')
 })

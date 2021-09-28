@@ -78,9 +78,9 @@ function addUser (newUser, db = connection) {
         firstName,
         lastName,
         businessName,
-        address,
-        suburb,
-        city,
+        addressStreet,
+        addressSuburb,
+        addressCity,
         product
 
       }

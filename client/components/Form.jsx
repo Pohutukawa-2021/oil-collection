@@ -3,13 +3,13 @@ import React, { useState } from 'react'
 function Form (props) {
   const [form, setForm] = useState(
     {
-      firstName: '',
-      lastName: '',
-      businessName: '',
-      addressStreet: '',
-      addressSuburb: '',
-      addressCity: '',
-      containers: ''
+      firstName: props.formData.firstName,
+      lastName: props.formData.lastName,
+      businessName: props.formData.businessName,
+      addressStreet: props.formData.addressStreet,
+      addressSuburb: props.formData.addressSuburb,
+      addressCity: props.formData.addressCity,
+      containers: props.formData.containers
     })
 
   function handleChange (e) {
@@ -23,7 +23,6 @@ function Form (props) {
   function handleSubmit (e) {
     e.preventDefault()
     props.submitForm(form)
-    console.log(form)
   }
 
   return (
@@ -100,7 +99,7 @@ function Form (props) {
             value='oil'
             //   value={form.product}
             onChange={handleChange}
-            checked="true"
+            checked={true}
           ></input>
         </div>
         <div className="field">
