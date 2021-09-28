@@ -52,7 +52,7 @@ export function addAuth (details) {
 export function testfunction (user) {
   return dispatch => {
     dispatch(addAuth(user))
-    getClientDetails(user.auth0Id, user.token)
+    return getClientDetails(user.auth0Id, user.token)
       .then(client => {
         dispatch(updateDetails(client))
         return null

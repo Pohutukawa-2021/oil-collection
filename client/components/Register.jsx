@@ -1,9 +1,9 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { registerDetails } from '../actions/clients'
-
+import { useHistory, Redirect } from 'react-router-dom'
+import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import Form from './Form'
+import { registerDetails } from '../actions/clients'
 
 function Register (props) {
   const history = useHistory()
@@ -20,7 +20,14 @@ function Register (props) {
     // Auth0 stuff goes here? --James
   }
   return (
-    <Form submitForm={handleClick} formData={props.client}/>
+    <>
+      <IfAuthenticated>
+        <Form submitForm={handleClick} formData={props.client} />
+      </IfAuthenticated>
+      {/* <IfNotAuthenticated>
+        <Redirect to={{ pathname: '/', state: { from: props.location } }}/>
+      </IfNotAuthenticated> */}
+    </>
   )
 }
 

@@ -3,6 +3,11 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { getLoginFn, getLogoutFn, getRegisterFn } from '../auth0-utils'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+
+const backgroundImage = {
+  backgroundImage: 'url("../Oil-Collection.png")'
+}
 
 function Nav (props) {
   // const { user } = props
@@ -27,9 +32,10 @@ function Nav (props) {
 
   return (
     <nav className='nav'>
+      <Link className='logo-link' to="/"><div className='logo' style={backgroundImage}></div></Link>
       <section className='nav-item'>
         <IfAuthenticated>
-          {/* <p>Hello, {user.name}</p> */}
+          <p>Hello, {props.user.firstName}</p>
           <section className='sign'>
             <a href='/' onClick={handleLogoff} className='nav__link'>Log out</a>
           </section>
@@ -50,7 +56,7 @@ function Nav (props) {
 
 function mapStateToProps (state) {
   return {
-    user: state.user
+    user: state
   }
 }
 

@@ -27,7 +27,6 @@ export function addUser (user, token) {
 }
 
 export function updateClientDetails (clientDetails, token) {
-  console.log(clientDetails.auth0Id)
   return request.patch('api/v1/clients/' + clientDetails.auth0Id + '/update')
     .send(clientDetails)
     .then(res => { return res.body })
@@ -36,6 +35,7 @@ export function updateClientDetails (clientDetails, token) {
 
 function errorHandler (method, route) {
   return (err) => {
+    console.log(err)
     if (err.message === 'Not Found') {
       throw Error(`Error: You need to implement an API route for ${method} ${route}`)
     } else {
