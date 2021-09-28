@@ -1,7 +1,13 @@
 .form-background {
     background-color: #F1EFEE;
     border-radius: 5%;
-    width: 45%;
+    left: 0px;
+    right: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 45%;
+    min-width: 35%;
     padding-bottom: 10px;
 }
 
