@@ -7,7 +7,7 @@ import Nav from './Nav'
 function CollectionRequest (props) {
   // const [orderStatus, setOrderStatus] = useState({ activeOrder: false })
 
-  const { auth0Id, businessName, addressStreet, addressCity, product } = props.client
+  const { auth0Id, businessName, addressStreet, addressCity, addressSuburb, product } = props.client
 
   const history = useHistory()
 
@@ -29,15 +29,17 @@ function CollectionRequest (props) {
 
           <h2>Your Address:</h2>
           <p>{addressStreet}</p>
+          <p>{addressSuburb}</p>
           <p>{addressCity}</p>
 
-          <h2>for {product} collection</h2>
+          <h2>{product} collection for {businessName}</h2>
           <button
             onClick={addOrder}
             className='button-login-register'
           >
-          CLICK HERE
+          REQUEST COLLECTION
           </button>
+          <br />
           <button
             onClick={handleRedirect}
             className='button-login-register'
