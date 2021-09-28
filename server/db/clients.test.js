@@ -56,15 +56,15 @@ test('ADD new user', () => {
     firstName: 'firstName',
     lastName: 'lastName',
     businessName: 'businessName',
-    address: 'address',
-    suburb: 'suburb',
-    city: 'city',
+    addressStreet: 'addressStreet',
+    addressSuburb: 'addressSuburb',
+    addressCity: 'addressCity',
     product: 'product'
   }
   return db.addUser(addNewUser, testDb)
     .then(user => {
       expect(user.firstName).toBe('firstName')
-      expect(user.city).toBe('city')
+      expect(user.addressCity).toBe('addressCity')
       expect(user.product).toBe('product')
       return null
     })
