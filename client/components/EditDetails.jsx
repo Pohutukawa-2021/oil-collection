@@ -1,8 +1,9 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { updateDetails } from '../actions/clients'
 import Form from './Form'
+import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 function EditDetails (props) {
   const history = useHistory()
@@ -13,8 +14,14 @@ function EditDetails (props) {
   }
 
   return (
-    <Form submitForm={handleClick} formData={props.client}/>
-
+    <>
+      <IfAuthenticated>
+        <Form submitForm={handleClick} formData={props.client}/>
+      </IfAuthenticated>
+      <IfNotAuthenticated>
+        <Redirect to={{ pathname: '/sign-in', state: { from: props.location } }}/>
+      </IfNotAuthenticated>
+    </>
   )
 }
 

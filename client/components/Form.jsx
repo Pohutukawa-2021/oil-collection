@@ -34,7 +34,6 @@ function Form (props) {
   function handleSubmit (e) {
     e.preventDefault()
     props.submitForm(form)
-    console.log(form)
   }
 
   return (

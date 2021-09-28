@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Redirect, Link } from 'react-router-dom'
 import { addNewOrder } from '../actions/clients'
+import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 function CollectionRequest (props) {
   // const [orderStatus, setOrderStatus] = useState({ activeOrder: false })
@@ -14,28 +15,39 @@ function CollectionRequest (props) {
     props.dispatch(addNewOrder(auth0Id))
     history.push('/confirmation')
   }
-
+  function handleRedirect (event) {
+    event.preventDefault()
+  }
   return (
     <>
-      <div>
+      <IfAuthenticated>
+        <div>
 
-        <h2>Your Account:</h2>
-        <p>{businessName}</p>
+          <h2>Your Account:</h2>
+          <p>{businessName}</p>
 
-        <h2>Your Address:</h2>
-        <p>{addressStreet}</p>
-        <p>{addressCity}</p>
+          <h2>Your Address:</h2>
+          <p>{addressStreet}</p>
+          <p>{addressCity}</p>
 
-        <h2>for {product} collection</h2>
-        <button
-          onClick={addOrder}
-          className='button-login-register'
-        >
+          <h2>for {product} collection</h2>
+          <button
+            onClick={addOrder}
+            className='button-login-register'
+          >
           CLICK HERE
+          </button>
+          <button
+            onClick={handleRedirect}
+            className='button-login-register'
+          ><Link to='/details/update'>EDIT DETAILS</Link>
+          </button>
 
-        </button>
-
-      </div>
+        </div>
+      </IfAuthenticated>
+      <IfNotAuthenticated>
+        <Redirect to={{ pathname: '/sign-in', state: { from: props.location } }}/>
+      </IfNotAuthenticated>
     </>
   )
 }
