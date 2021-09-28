@@ -49,16 +49,18 @@ export function addAuth (details) {
   }
 }
 
-export function testfunction (user) {
-  return dispatch => {
-    dispatch(addAuth(user))
-    return getClientDetails(user.auth0Id, user.token)
-      .then(client => {
-        dispatch(updateDetails(client))
-        return null
-      })
-      .catch(err => console.error(err))
-  }
+export function getAuthClient (user) {
+  return user.auth0Id !== ''
+    ? dispatch => {
+      dispatch(addAuth(user))
+      return getClientDetails(user.auth0Id, user.token)
+        .then(client => {
+          dispatch(updateDetails(client))
+          return null
+        })
+        .catch(err => console.error(err))
+    }
+    : null
 }
 
 export function registerDetails (user) {
