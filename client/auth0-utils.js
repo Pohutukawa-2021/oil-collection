@@ -21,8 +21,6 @@ export async function cacheUser (useAuth0) {
     } catch (err) {
       console.error(err)
     }
-  } else {
-    saveUser()
   }
 }
 
