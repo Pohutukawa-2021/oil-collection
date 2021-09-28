@@ -13,17 +13,17 @@ beforeEach(() => {
 })
 
 test('GET Client details by id', () => {
-  return db.getClientDetails(3, testDb)
+  return db.getClientDetails('auth0|614bc653d42a69006aa03751', testDb)
     .then(listDetails => {
-      expect(listDetails.firstName).toBe('Don')
-      expect(listDetails.addressSuburb).toBe('CBD')
-      expect(listDetails.product).toBe('oil')
+      expect(listDetails.firstName).toBe('Ahmed')
+      expect(listDetails.addressSuburb).toBe('Chartwell')
+      expect(listDetails.product).toBe('fat')
       return null
     })
 })
 
 test('SEND new request/order', () => {
-  return db.activateOrder(3, testDb)
+  return db.activateOrder('auth0|614bc653d42a69006aa03751', testDb)
     .then(request => {
       expect(request.orderActive).toBe(1)
       return null

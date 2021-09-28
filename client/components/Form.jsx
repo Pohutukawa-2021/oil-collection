@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 function Form (props) {
   const [form, setForm] = useState(
-    props.formData ||
     {
       firstName: '',
       lastName: '',
@@ -12,16 +11,6 @@ function Form (props) {
       addressCity: '',
       containers: ''
     })
-
-  const {
-    firstName,
-    lastName,
-    businessName,
-    addressStreet,
-    addressSuburb,
-    addressCity,
-    containers
-  } = form
 
   function handleChange (e) {
     const { name, value } = e.target
@@ -46,7 +35,7 @@ function Form (props) {
             className='form-input'
             id='firstName'
             name='firstName'
-            value={firstName}
+            value={form.firstName}
             onChange={handleChange}
           ></input>
         </div>
@@ -56,7 +45,7 @@ function Form (props) {
             className='form-input'
             id='lastName'
             name='lastName'
-            value={lastName}
+            value={form.lastName}
             onChange={handleChange}
           ></input>
         </div>
@@ -66,7 +55,7 @@ function Form (props) {
             className='form-input'
             id='businessName'
             name='businessName'
-            value={businessName}
+            value={form.businessName}
             onChange={handleChange}
           ></input>
         </div>
@@ -76,7 +65,7 @@ function Form (props) {
             className='form-input'
             id='addressStreet'
             name='addressStreet'
-            value={addressStreet}
+            value={form.addressStreet}
             onChange={handleChange}
           ></input>
         </div>
@@ -86,7 +75,7 @@ function Form (props) {
             className='form-input'
             id='addressSuburb'
             name='addressSuburb'
-            value={addressSuburb}
+            value={form.addressSuburb}
             onChange={handleChange}
           ></input>
         </div>
@@ -96,7 +85,7 @@ function Form (props) {
             className='form-input'
             id='addressCity'
             name='addressCity'
-            value={addressCity}
+            value={form.addressCity}
             onChange={handleChange}
           ></input>
         </div>
@@ -110,7 +99,10 @@ function Form (props) {
             value='oil'
             //   value={form.product}
             onChange={handleChange}
+            checked="true"
           ></input>
+        </div>
+        <div className="field">
           <label htmlFor='product' className='form-label'>Fat</label>
           <input
             className='form-input'
@@ -128,7 +120,7 @@ function Form (props) {
             className='form-input'
             id='containers'
             name='containers'
-            value={containers}
+            value={form.containers}
             onChange={handleChange}
           ></input>
         </div>
