@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { useHistory, Redirect, Link } from 'react-router-dom'
 import { addNewOrder } from '../actions/clients'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
-
+import Nav from './Nav'
 function CollectionRequest (props) {
   // const [orderStatus, setOrderStatus] = useState({ activeOrder: false })
 
@@ -20,6 +20,7 @@ function CollectionRequest (props) {
   }
   return (
     <>
+      <Nav/>
       <IfAuthenticated>
         <div>
 

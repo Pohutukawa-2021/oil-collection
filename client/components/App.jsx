@@ -17,7 +17,7 @@ export default function App () {
   return (
     <>
       <Header />
-      <Nav />
+      {/* <Nav /> */}
       <main className='app-container light'>
         {/* <Route exact path='/' component={NotNav} /> */}
         <Route path='/sign-in' component={SignIn} />
