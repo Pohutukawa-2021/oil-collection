@@ -1,16 +1,6 @@
 import { UPDATE_CLIENT_DETAILS, ADD_TOKEN_DETAILS, UPDATE_ORDER_ACTIVE_STATUS } from '../actions/clients'
 
 const initialUser = {
-  id: 1,
-  firstName: 'Jared',
-  lastName: 'Pinfold',
-  businessName: 'JP Bakery',
-  addressStreet: '3 Eda st',
-  addressSuburb: 'CBD',
-  addressCity: 'Auckland',
-  product: 'oil',
-  containers: 'tank',
-  orderActive: false
 }
 
 function updateClients (state = initialUser, action) {
