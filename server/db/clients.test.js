@@ -81,8 +81,8 @@ test('ADD new user', () => {
     })
     .then(client => {
       expect(client.firstName).toBe('firstName')
-      // expect(user.addressCity).toBe('addressCity')
-      // expect(user.product).toBe('product')
+      expect(client.addressCity).toBe('addressCity')
+      expect(client.product).toBe('product')
       return null
     })
 })
