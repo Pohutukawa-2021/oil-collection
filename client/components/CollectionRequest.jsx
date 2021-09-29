@@ -9,7 +9,6 @@ function CollectionRequest (props) {
   // const [orderStatus, setOrderStatus] = useState({ activeOrder: false })
 
   const { auth0Id, businessName, addressStreet, addressCity, addressSuburb, product, orderActive } = props.client
-  console.log(orderActive)
   const history = useHistory()
 
   function addOrder () {
