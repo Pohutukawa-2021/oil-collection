@@ -1,0 +1,46 @@
+@media only screen and (max-width: 414px) and (orientation: portrait) {
+    .logo-homePage {
+        padding-top: 65%;
+        margin-bottom: 15%;
+    }
+
+    .nav__link {
+        padding-left: 32px;
+    }
+
+    .logo {
+        inline-size: 110px;
+    }
+
+    .form-background {
+        max-width: 100%;
+    }
+
+    .field {
+        flex-direction: column;
+        position: relative;
+    }
+
+    input[type='radio'] {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+
+    label {
+        text-align: left;
+    }
+
+    label[for="product"] {
+        padding-top: 1em;
+    }
+
+    .field .form-input {
+        width: auto;
+    }
+    
+    .button-login-register {
+        margin: 10px 0px;
+        width: 100%;
+    }
+}
