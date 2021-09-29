@@ -35,7 +35,7 @@ function Nav (props) {
       <Link className='logo-link' to="/"><div className='logo' style={backgroundImage}></div></Link>
       <section className='nav-item'>
         <IfAuthenticated>
-          <p>Hello, {props.user.firstName}</p>
+          <i>Hello, {props.user.firstName}</i>
           <section className='sign'>
             <a href='/' onClick={handleLogoff} className='nav__link'>Log out</a>
           </section>
