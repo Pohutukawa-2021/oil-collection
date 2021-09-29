@@ -41,6 +41,6 @@ export function getRegisterFn (useAuth0) {
   const redirectUri = `${window.location.origin}/#/register`
   return () => loginWithRedirect({
     redirectUri,
-    screen_hint: 'signin'
+    screen_hint: 'signup'
   })
 }

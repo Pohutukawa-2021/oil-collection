@@ -12,6 +12,7 @@ exports.up = (knex) => {
     table.string('containers')
     table.integer('price')
     table.boolean('order_active')
+    table.datetime('order_timestamp')
   })
 }
 
