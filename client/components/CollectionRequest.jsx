@@ -8,7 +8,8 @@ import Nav from './Nav'
 function CollectionRequest (props) {
   // const [orderStatus, setOrderStatus] = useState({ activeOrder: false })
 
-  const { auth0Id, businessName, addressStreet, addressCity, addressSuburb, product, orderActive } = props.client
+  const { auth0Id, businessName, addressStreet, addressCity, addressSuburb, product, orderActive, orderTimeStamp } = props.client
+
   const history = useHistory()
 
   function addOrder () {
@@ -43,6 +44,7 @@ function CollectionRequest (props) {
           </IfNotOrderActive>
           <IfOrderActive orderActive={orderActive}>
             <h3>{product} collection has been requested</h3>
+            <h3>on {orderTimeStamp}</h3>
           </IfOrderActive>
           <br />
           <button
