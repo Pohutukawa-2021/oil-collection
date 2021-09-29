@@ -32,7 +32,7 @@ function activateOrder (id, db = connection) {
     .where('auth0_id', id)
     .update({
       order_active: 1, // 0 is false, 1 is true
-      order_timestamp: new Date()
+      order_timestamp: new Date().toISOString()
     })
     .then(() => getClientDetails(id, db))
 }
