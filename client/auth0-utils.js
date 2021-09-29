@@ -1,4 +1,4 @@
-import { testfunction } from './actions/clients'
+import { getAuthClient } from './actions/clients'
 import { store } from './index'
 
 const emptyUser = {
@@ -8,7 +8,7 @@ const emptyUser = {
 }
 
 function saveUser (user = emptyUser) {
-  store.dispatch(testfunction(user))
+  store.dispatch(getAuthClient(user))
 }
 
 export async function cacheUser (useAuth0) {
@@ -21,8 +21,6 @@ export async function cacheUser (useAuth0) {
     } catch (err) {
       console.error(err)
     }
-  } else {
-    saveUser()
   }
 }
 
@@ -43,6 +41,6 @@ export function getRegisterFn (useAuth0) {
   const redirectUri = `${window.location.origin}/#/register`
   return () => loginWithRedirect({
     redirectUri,
-    screen_hint: 'signin'
+    screen_hint: 'signup'
   })
 }

@@ -96,10 +96,9 @@ function Form (props) {
             type='radio'
             id='product'
             name='product'
-            value='oil'
+            value='Oil'
             //   value={form.product}
             onChange={handleChange}
-            checked={true}
           ></input>
         </div>
         <div className="field">
@@ -109,7 +108,7 @@ function Form (props) {
             type='radio'
             id='product'
             name='product'
-            value='fat'
+            value='Fat'
             //   value={form.product}
             onChange={handleChange}
           ></input>
