@@ -1,14 +1,15 @@
 const connection = require('./connection')
 
 module.exports = {
-  getCustomerDetails,
+  getClientDetails,
   activateOrder,
-  updateCustomerDetails
+  updateClientDetails,
+  addUser
 }
 
-function getCustomerDetails (id, db = connection) {
+function getClientDetails (id, db = connection) {
   return db('clients')
-    .where('id', id)
+    .where('auth0_id', id)
     .select(
       'id',
       'first_name as firstName',
@@ -28,28 +29,51 @@ function getCustomerDetails (id, db = connection) {
 
 function activateOrder (id, db = connection) {
   return db('clients')
-    .where('id', id)
+    .where('auth0_id', id)
     .update({
-      order_active: 1 // 0 is false, 1 is true
+      order_active: 1, // 0 is false, 1 is true
+      order_timestamp: new Date()
     })
-    .then(() => getCustomerDetails(id, db))
+    .then(() => getClientDetails(id, db))
 }
 
-function updateCustomerDetails (customerDetails, db = connection) {
+function updateClientDetails (clientDetails, db = connection) {
   const updateObject = {
-    first_name: customerDetails.first_name,
-    last_name: customerDetails.last_name,
-    business_name: customerDetails.business_name,
-    address_street: customerDetails.address_street,
-    address_suburb: customerDetails.address_suburb,
-    address_city: customerDetails.address_city,
-    product: customerDetails.product,
-    containers: customerDetails.containers
+    first_name: clientDetails.firstName,
+    last_name: clientDetails.lastName,
+    business_name: clientDetails.businessName,
+    address_street: clientDetails.addressStreet,
+    address_suburb: clientDetails.addressSuburb,
+    address_city: clientDetails.addressCity,
+    product: clientDetails.product,
+    containers: clientDetails.containers
   }
   return db('clients')
-    .where('id', customerDetails.id)
+    .where('auth0_id', clientDetails.auth0Id)
     .update(updateObject)
     .then(() => {
-      return updateObject
+      return null
+    })
+}
+
+function addUser (newUser, db = connection) {
+  const { firstName, lastName, businessName, addressStreet, addressSuburb, addressCity, product, auth0Id, containers, price } = newUser
+  const addNewUser = {
+    first_name: firstName,
+    last_name: lastName,
+    business_name: businessName,
+    address_street: addressStreet,
+    address_suburb: addressSuburb,
+    address_city: addressCity,
+    product: product,
+    containers,
+    auth0_id: auth0Id,
+    order_active: false,
+    price
+  }
+  return db('clients')
+    .insert(addNewUser)
+    .then(() => {
+      return null
     })
 }
