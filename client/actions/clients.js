@@ -49,7 +49,7 @@ export function addAuth (details) {
   }
 }
 
-export function testfunction (user) {
+export function getAuthClient (user) {
   return dispatch => {
     dispatch(addAuth(user))
     return getClientDetails(user.auth0Id, user.token)
