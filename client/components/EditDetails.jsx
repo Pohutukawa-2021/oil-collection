@@ -17,7 +17,8 @@ function EditDetails (props) {
       email: props.client.email
     }
     props.dispatch(editDetails(client))
-    history.push('/')
+    history.push('/sign-in')
+    // window.location.href = '/'
   }
 
   return (

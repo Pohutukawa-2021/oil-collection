@@ -36,7 +36,7 @@ function authDetailHelper (state, details) {
 }
 
 function updateClientHelper (state, details) {
-  const { id, firstName, lastName, businessName, addressStreet, addressSuburb, addressCity, product, containers, price, orderActive } = details
+  const { id, firstName, lastName, businessName, addressStreet, addressSuburb, addressCity, product, containers, price, orderActive, orderTimeStamp } = details
   return {
     ...state,
     id,
@@ -49,7 +49,8 @@ function updateClientHelper (state, details) {
     product,
     containers,
     price,
-    orderActive
+    orderActive,
+    orderTimeStamp
   }
 }
 
