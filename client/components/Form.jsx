@@ -18,58 +18,6 @@ function Form (props) {
       ...form,
       [name]: value
     })
-
-    const errors = form.errors
-
-    switch (name) {
-      case 'firstName':
-        errors.fullName =
-        value.length < 1
-          ? 'Field cannot be empty!'
-          : ''
-        break
-      case 'lastName':
-        errors.fullName =
-        value.length < 1
-          ? 'Field cannot be empty!'
-          : ''
-        break
-      case 'businessName':
-        errors.fullName =
-        value.length < 1
-          ? 'Field cannot be empty!'
-          : ''
-        break
-      case 'addressStreet':
-        errors.fullName =
-        value.length < 1
-          ? 'Field cannot be empty!'
-          : ''
-        break
-      case 'addressSuburb':
-        errors.fullName =
-        value.length < 1
-          ? 'Field cannot be empty!'
-          : ''
-        break
-      case 'addressCity':
-        errors.fullName =
-        value.length < 1
-          ? 'Field cannot be empty!'
-          : ''
-        break
-      case 'containers':
-        errors.fullName =
-        value.length < 1
-          ? 'Field cannot be empty!'
-          : ''
-        break
-      default:
-        break
-    }
-    setForm({ errors, [name]: value }, () => {
-      console.log(errors)
-    })
   }
 
   function handleSubmit (e) {
