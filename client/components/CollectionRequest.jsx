@@ -3,12 +3,12 @@ import { connect } from 'react-redux'
 import { useHistory, Redirect, Link } from 'react-router-dom'
 import { addNewOrder } from '../actions/clients'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import { IfOrderActive, IfNotOrderActive } from './OrderActive'
 import Nav from './Nav'
 function CollectionRequest (props) {
   // const [orderStatus, setOrderStatus] = useState({ activeOrder: false })
 
-  const { auth0Id, businessName, addressStreet, addressCity, addressSuburb, product } = props.client
-
+  const { auth0Id, businessName, addressStreet, addressCity, addressSuburb, product, orderActive } = props.client
   const history = useHistory()
 
   function addOrder () {
@@ -33,12 +33,17 @@ function CollectionRequest (props) {
           <p>{addressCity}</p>
 
           <h2>{product} collection for {businessName}</h2>
-          <button
-            onClick={addOrder}
-            className='button-login-register'
-          >
+          <IfNotOrderActive orderActive={orderActive}>
+            <button
+              onClick={addOrder}
+              className='button-login-register'
+            >
           REQUEST COLLECTION
-          </button>
+            </button>
+          </IfNotOrderActive>
+          <IfOrderActive orderActive={orderActive}>
+            <h3>{product} collection has been requested</h3>
+          </IfOrderActive>
           <br />
           <button
             onClick={handleRedirect}
