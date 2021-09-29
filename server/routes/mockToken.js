@@ -42,7 +42,7 @@ const nockReply = {
 }
 
 // nock will intercept the http call and will return the nockReply object
-nock('https://gardenz.au.auth0.com')
+nock('https://dev-eg4fpx11.us.auth0.com')
   .persist()
   .get('/.well-known/jwks.json')
   .reply(200, nockReply)
@@ -61,8 +61,8 @@ const getMockToken = () => {
     header: { kid: '0' },
     algorithm: 'RS256',
     expiresIn: '1d',
-    audience: 'https://garden/nz/api',
-    issuer: 'https://gardenz.au.auth0.com/'
+    audience: 'https://oil/api',
+    issuer: 'https://dev-eg4fpx11.us.auth0.com/'
   }
 
   let token
@@ -94,8 +94,8 @@ const getAdminToken = () => {
     header: { kid: '0' },
     algorithm: 'RS256',
     expiresIn: '1d',
-    audience: 'https://garden/nz/api',
-    issuer: 'https://gardenz.au.auth0.com/'
+    audience: 'https://oil/api',
+    issuer: 'https://dev-eg4fpx11.us.auth0.com/'
   }
 
   let token

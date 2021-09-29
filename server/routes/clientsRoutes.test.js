@@ -10,7 +10,6 @@ const testAuthAdminHeader = {
 }
 
 test('GET Client details returns all details', () => {
-  db.getClientDetails = jest.fn()
   db.getClientDetails.mockImplementation(() => {
     return Promise.resolve({ id: 123 })
   })
@@ -26,12 +25,11 @@ test('GET Client details returns all details', () => {
 })
 
 test('UPDATE order active status', () => {
-  db.activateOrder = jest.fn()
   db.activateOrder.mockImplementation(() => {
     return Promise.resolve({ order_active: 1 })
   })
   return request(server)
-    .patch('/api/v1/clients/4/request')
+    .patch('/api/v1/clients/4')
     .set(testAuthAdminHeader)
     .then((orderStatus) => {
       expect(orderStatus.status).toBe(200)
