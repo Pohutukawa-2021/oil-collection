@@ -12,41 +12,77 @@ beforeEach(() => {
   return testDb.seed.run()
 })
 
-test('GET customer details by id', () => {
-  return db.getCustomerDetails(3, testDb)
+afterAll(() => {
+  return testDb.destroy()
+})
+
+test('GET Client details by id', () => {
+  return db.getClientDetails('auth0|614bc653d42a69006aa03751', testDb)
     .then(listDetails => {
-      expect(listDetails.firstName).toBe('Don')
-      expect(listDetails.addressSuburb).toBe('CBD')
-      expect(listDetails.product).toBe('oil')
+      expect(listDetails.firstName).toBe('Ahmed')
+      expect(listDetails.addressSuburb).toBe('Chartwell')
+      expect(listDetails.product).toBe('fat')
       return null
     })
 })
 
 test('SEND new request/order', () => {
-  return db.activateOrder(3, testDb)
+  return db.activateOrder('auth0|614bc653d42a69006aa03751', testDb)
     .then(request => {
       expect(request.orderActive).toBe(1)
       return null
     })
 })
 
-test('UPDATE customer details', () => {
+test('UPDATE Client details', () => {
   const updateDetails = {
-    id: 2,
-    first_name: 'Zahira',
-    last_name: 'Champion',
-    business_name: 'CookSavvy',
-    address_street: '1A Lilac Hwy',
-    address_suburb: 'CBD',
-    address_city: 'Auckland',
-    product: 'fat',
-    containers: 'drum'
+    firstName: 'firstName',
+    lastName: 'lastName',
+    businessName: 'businessName',
+    addressStreet: 'addressStreet',
+    addressSuburb: 'addressSuburb',
+    addressCity: 'addressCity',
+    product: 'product',
+    containers: 'container',
+    auth0Id: 'auth0|614bc653d42a69006aa03751',
+    orderActive: false,
+    price: 1
   }
-  return db.updateCustomerDetails(updateDetails, testDb)
-    .then((details) => {
-      expect(details.first_name).toBe('Zahira')
-      expect(details.address_suburb).toBe('CBD')
-      expect(details.product).toBe('fat')
+  return db.updateClientDetails(updateDetails, testDb)
+    .then(() => {
+      return db.getClientDetails(updateDetails.auth0Id, testDb)
+    })
+    .then(details => {
+      expect(details.firstName).toBe('firstName')
+      expect(details.addressSuburb).toBe('addressSuburb')
+      expect(details.product).toBe('product')
+      return null
+    })
+})
+
+test('ADD new user', () => {
+  const addNewUser = {
+    firstName: 'firstName',
+    lastName: 'lastName',
+    businessName: 'businessName',
+    addressStreet: 'addressStreet',
+    addressSuburb: 'addressSuburb',
+    addressCity: 'addressCity',
+    product: 'product',
+    containers: 'container',
+    auth0Id: 'auth0Id',
+    orderActive: false,
+    price: 1
+
+  }
+  return db.addUser(addNewUser, testDb)
+    .then(() => {
+      return db.getClientDetails(addNewUser.auth0Id, testDb)
+    })
+    .then(client => {
+      expect(client.firstName).toBe('firstName')
+      expect(client.addressCity).toBe('addressCity')
+      expect(client.product).toBe('product')
       return null
     })
 })

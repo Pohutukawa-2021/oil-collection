@@ -1,41 +1,63 @@
-import React, { useState } from 'react'
-import Footer from './Footer'
+import React from 'react'
 import { connect } from 'react-redux'
-import { addOrder } from '../api/clients'
-
+import { useHistory, Redirect, Link } from 'react-router-dom'
+import { addNewOrder } from '../actions/clients'
+import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import { IfOrderActive, IfNotOrderActive } from './OrderActive'
+import Nav from './Nav'
 function CollectionRequest (props) {
-  const [orderStatus, setOrderStatus] = useState({ activeOrder: false })
+  // const [orderStatus, setOrderStatus] = useState({ activeOrder: false })
 
-  const { id, businessName, addressStreet, addressCity, product } = props.client
+  const { auth0Id, businessName, addressStreet, addressCity, addressSuburb, product, orderActive, orderTimeStamp } = props.client
 
-  function addNewOrder () {
-    setOrderStatus({ activeOrder: true })
-    console.log(id, orderStatus)
-    props.dispatch(addOrder(id, orderStatus))
+  const history = useHistory()
+
+  function addOrder () {
+    props.dispatch(addNewOrder(auth0Id))
+    history.push('/confirmation')
   }
-
+  function handleRedirect (event) {
+    event.preventDefault()
+  }
   return (
     <>
-      <div>
+      <Nav/>
+      <IfAuthenticated>
+        <div>
 
-        <h2>Your Account:</h2>
-        <p>{businessName}</p>
+          <h2>Your Account:</h2>
+          <p>{businessName}</p>
 
-        <h2>Your Address:</h2>
-        <p>{addressStreet}</p>
-        <p>{addressCity}</p>
+          <h2>Your Address:</h2>
+          <p>{addressStreet}</p>
+          <p>{addressSuburb}</p>
+          <p>{addressCity}</p>
 
-        <h2>for {product} collection</h2>
-        <button
-          onClick={addNewOrder}
-          className='button-primary'
-        >
-          CLICK HERE
+          <h2>{product} collection for {businessName}</h2>
+          <IfNotOrderActive orderActive={orderActive}>
+            <button
+              onClick={addOrder}
+              className='button-login-register'
+            >
+          REQUEST COLLECTION
+            </button>
+          </IfNotOrderActive>
+          <IfOrderActive orderActive={orderActive}>
+            <h3>{product} collection has been requested</h3>
+            <h3>on {orderTimeStamp}</h3>
+          </IfOrderActive>
+          <br />
+          <button
+            onClick={handleRedirect}
+            className='button-login-register'
+          ><Link to='/details/update'>EDIT DETAILS</Link>
+          </button>
 
-        </button>
-
-      </div>
-      <Footer/>
+        </div>
+      </IfAuthenticated>
+      <IfNotAuthenticated>
+        <Redirect to={{ pathname: '/sign-in', state: { from: props.location } }}/>
+      </IfNotAuthenticated>
     </>
   )
 }
