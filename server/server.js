@@ -1,4 +1,5 @@
 const path = require('path')
+const compression = require('compression')
 const express = require('express')
 
 const clients = require('./routes/clients')
@@ -8,6 +9,7 @@ const privateRoutes = require('./routes/private')
 
 const server = express()
 
+server.use(compression())
 server.use(express.json())
 server.use(express.static(path.join(__dirname, 'public')))
 
