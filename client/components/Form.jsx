@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 function Form (props) {
+  console.log(props)
   const [form, setForm] = useState(
     {
       firstName: props.formData.firstName,
@@ -9,8 +10,12 @@ function Form (props) {
       addressStreet: props.formData.addressStreet,
       addressSuburb: props.formData.addressSuburb,
       addressCity: props.formData.addressCity,
-      containers: props.formData.containers
+      containers: props.formData.containers,
+      product: props.formData.product
     })
+  // const [product, setProduct] = useState({
+  //   product: props.formData.product
+  // })
 
   function handleChange (e) {
     const { name, value } = e.target
@@ -97,6 +102,8 @@ function Form (props) {
             id='product'
             name='product'
             value='Oil'
+            checked={form.product === 'Oil'}
+            onClick={() => setForm({ product: 'Oil' })}
             //   value={form.product}
             onChange={handleChange}
           ></input>
@@ -108,8 +115,10 @@ function Form (props) {
             type='radio'
             id='product'
             name='product'
-            value='Fat'
-            //   value={form.product}
+            value="Fat"
+            checked={form.product === 'Fat'}
+            onClick={() => setForm({ product: 'Fat' })}
+            //   value={form.product}() => setProduct('Fat')
             onChange={handleChange}
           ></input>
         </div>
