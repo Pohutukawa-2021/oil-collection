@@ -100,7 +100,6 @@ function Form (props) {
             value='Oil'
             checked={form.product === 'Oil'}
             onClick={() => setForm({ product: 'Oil' })}
-            //   value={form.product}
             onChange={handleChange}
           ></input>
         </div>
@@ -114,7 +113,6 @@ function Form (props) {
             value="Fat"
             checked={form.product === 'Fat'}
             onClick={() => setForm({ product: 'Fat' })}
-            //   value={form.product}() => setProduct('Fat')
             onChange={handleChange}
           ></input>
         </div>
