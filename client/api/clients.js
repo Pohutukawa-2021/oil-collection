@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-export function getClientDetails (id, token) {
+export function getClientDetails(id, token) {
   return request.get('/api/v1/clients/' + id)
     .set('authorization', `Bearer ${token}`)
     .then(res => {
@@ -9,14 +9,14 @@ export function getClientDetails (id, token) {
     .catch(errorHandler('GET', '/api/v1/clients'))
 }
 
-export function addOrder (id) {
+export function addOrder(id) {
   return request.patch(`/api/v1/clients/${id}`)
     .send(id)
     .then(res => { return res.body })
     .catch(errorHandler('PATCH', '/api/v1/clients'))
 }
 
-export function addUser (user, token) {
+export function addUser(user, token) {
   return request.post('/api/v1/clients')
     .set('authorization', `Bearer ${token}`)
     .send(user)
@@ -26,16 +26,15 @@ export function addUser (user, token) {
     .catch(errorHandler('POST', '/api/v1/clients'))
 }
 
-export function updateClientDetails (clientDetails, token) {
+export function updateClientDetails(clientDetails, token) {
   return request.patch('api/v1/clients/' + clientDetails.auth0Id + '/update')
     .send(clientDetails)
     .then(res => { return res.body })
     .catch(errorHandler('PATCH', '/api/v1/clients/:id/update'))
 }
 
-function errorHandler (method, route) {
+function errorHandler(method, route) {
   return (err) => {
-    console.log(err)
     if (err.message === 'Not Found') {
       throw Error(`Error: You need to implement an API route for ${method} ${route}`)
     } else {

@@ -6,7 +6,7 @@ export const ADD_TOKEN_DETAILS = 'ADD_TOKEN_DETAILS'
 export const SHOW_ERROR = 'SHOW_ERROR'
 export const UPDATE_ORDER_ACTIVE_STATUS = 'UPDATE_ORDER_ACTIVE_STATUS'
 
-export function updateOrderActiveStatus () {
+export function updateOrderActiveStatus() {
   const orderStatus = { orderActive: true }
   return {
     type: UPDATE_ORDER_ACTIVE_STATUS,
@@ -14,14 +14,14 @@ export function updateOrderActiveStatus () {
   }
 }
 
-export function updateDetails (details) {
+export function updateDetails(details) {
   return {
     type: UPDATE_CLIENT_DETAILS,
     details
   }
 }
 
-export function addNewOrder (id) {
+export function addNewOrder(id) {
   return (dispatch) => {
     addOrder(id)
       .then(() => {
@@ -35,21 +35,21 @@ export function addNewOrder (id) {
   }
 }
 
-export function showError (errorMessage) {
+export function showError(errorMessage) {
   return {
     type: SHOW_ERROR,
     errorMessage: errorMessage
   }
 }
 
-export function addAuth (details) {
+export function addAuth(details) {
   return {
     type: ADD_TOKEN_DETAILS,
     details
   }
 }
 
-export function getAuthClient (user) {
+export function getAuthClient(user) {
   return dispatch => {
     dispatch(addAuth(user))
     return getClientDetails(user.auth0Id, user.token)
@@ -57,29 +57,34 @@ export function getAuthClient (user) {
         dispatch(updateDetails(client))
         return null
       })
-      .catch(err => console.error(err))
+      .catch((err) => {
+
+      })
   }
 }
 
-export function registerDetails (user) {
+export function registerDetails(user) {
   return dispatch => {
     addUser(user, user.token)
       .then(() => {
-        console.log(user)
         dispatch(updateDetails(user))
         return null
       })
-      .catch(err => console.error(err))
+      .catch((err) => {
+
+      })
   }
 }
 
-export function editDetails (user) {
+export function editDetails(user) {
   return dispatch => {
     updateClientDetails(user, user.token)
       .then(() => {
         dispatch(updateDetails(user))
         return null
       })
-      .catch(err => console.error(err))
+      .catch((err) => {
+
+      })
   }
 }

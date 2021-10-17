@@ -69,7 +69,6 @@ const getMockToken = () => {
   try {
     token = jwt.sign(payload, privateKey, options)
   } catch (err) {
-    console.error(err)
     throw err
   }
 
@@ -102,7 +101,6 @@ const getAdminToken = () => {
   try {
     token = jwt.sign(payload, privateKey, options)
   } catch (err) {
-    console.log(err)
     throw err
   }
 

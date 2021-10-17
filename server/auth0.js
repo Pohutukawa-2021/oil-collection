@@ -13,7 +13,6 @@ const getUserRoles = async (uid) => {
   const accessToken = await getAccessToken()
   const { body } = await request(`${domain}/api/v2/users/${uid}/roles`)
     .set({ authorization: `Bearer ${accessToken}` })
-  console.log(accessToken)
   return body[0].name
 }
 
