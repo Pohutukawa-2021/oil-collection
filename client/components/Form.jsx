@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 function Form (props) {
-  console.log(props)
   const [form, setForm] = useState(
     {
       firstName: props.formData.firstName,
@@ -13,9 +12,6 @@ function Form (props) {
       containers: props.formData.containers,
       product: props.formData.product
     })
-  // const [product, setProduct] = useState({
-  //   product: props.formData.product
-  // })
 
   function handleChange (e) {
     const { name, value } = e.target
