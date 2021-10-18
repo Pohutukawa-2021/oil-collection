@@ -1,41 +1,61 @@
-# A starter project for React/Redux
+# Oil Collection NZ 
 
-> A minimalistic React/Redux starter project
+> Oil Collection is a website for restaurants/cafes etc that have oil and/or fat waste to easily request a collection. We created this for our final group project at [Enspiral Dev Academy](https://devacademy.co.nz/) and intend to continue building a viable product. 
 
-To use:
+<p align="center">
+  <img src="./server/public/Oil-Collection.png">
+</p>
 
-* Fork this repo
-* Rename your repo according to the app you're building
-
-```sh
-git clone https://github.com/[your-org]/[your-app].git
-cd [your-app] && npm i
-```
-
-This is the structure of this boilerplate:
+# Setup:
+Clone the repo and then do the following:
 
 ```sh
-.
-├── client
-│   ├── actions
-│   │   └── index.js
-│   ├── components
-│   │   ├── AddWord.jsx
-│   │   ├── App.jsx
-│   │   ├── Word.jsx
-│   │   └── Words.jsx
-│   ├── reducers
-│   │   ├── index.js
-│   │   └── words.js
-│   └── index.js
-├── public
-│   ├── index.html
-│   └── main.css
-├── server
-│   ├── index.js
-│   └── server.js
-├── .gitignore
-├── package.json
-├── README.md
-└── webpack.config.js
+cd oil-collection
+npm i
+npm run knex migrate:latest
+npm run knex seed: run
+npm run dev
 ```
+
+You can find the server running on http://localhost:3000/
+<br>
+Deployment in progress.
+
+# Testing:
+To run all tests:
+```sh
+npm run test
+```
+Specific test file:
+```sh
+npm test db/clients
+npm test server/routes
+npm test client/components
+```
+
+# Built Using:
+* HTML
+* Javascript
+* Node.js
+* React.js
+* Redux.js
+* Thunk
+* Auth0
+* CSS
+* Sass
+* Jest
+* Sqlite
+* Super-Agent
+* Express
+
+# Planning:
+* [Miro](https://miro.com/app/board/o9J_lvCVk5g=/)
+* [Figma](https://www.figma.com/file/N0RBLww3uDAUa97WQ8LSv9/OIL-COLLECTION?node-id=0%3A1)
+
+
+# Created by: 
+* Cristopher Germuts: [GitHub](https://github.com/cristophergc) | [LinkedIn](https://www.linkedin.com/in/cristopher-germuts-19591538/)
+* Zahira Champion: [GitHub](https://github.com/zahira-champion) | [LinkedIn](https://www.linkedin.com/in/zahira-jasmine-c-1a6317b4/)
+* Jesse Caunter: [GitHub](https://github.com/jessecaunter) | [LinkedIn](https://www.linkedin.com/in/jessecaunter/)
+* James Wilson: [GitHub](https://github.com/james-wilson-21) | [LinkedIn](https://www.linkedin.com/in/james-wilson-72b0a077/)
+* David Haworth: [GitHub](https://github.com/davehaworth) | [LinkedIn](https://www.linkedin.com/in/david-haworth-130596222/)
