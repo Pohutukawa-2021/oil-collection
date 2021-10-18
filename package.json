@@ -1,6 +1,9 @@
 {
   "name": "boilerplate-react-redux",
   "version": "0.2.0",
+  "engines": {
+    "node": "14.17.5"
+  },
   "description": "React Redux using express",
   "main": "server/index.js",
   "scripts": {
