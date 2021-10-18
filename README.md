@@ -1,6 +1,6 @@
 # Oil Collection NZ 
 
-> Oil Collection is a website for restaurants/cafes etc that have oil and/or fat waste to easily request a collection. We created this for our final group project at [Enspiral Dev Academy](https://devacademy.co.nz/) and intend to continue building a viable product. 
+> Oil Collection is a website for businesses that provides used cooking oil collection services. The website allows their clients to register their business and request oil collection with the click of a button. We created this for our final group project at [Enspiral Dev Academy](https://devacademy.co.nz/) and intend to continue building a viable product. 
 
 <p align="center">
   <img src="./server/public/Oil-Collection.png">
