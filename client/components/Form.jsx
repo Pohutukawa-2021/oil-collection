@@ -9,8 +9,7 @@ function Form (props) {
       addressStreet: props.formData.addressStreet,
       addressSuburb: props.formData.addressSuburb,
       addressCity: props.formData.addressCity,
-      containers: props.formData.containers,
-      product: props.formData.product
+      containers: props.formData.containers
     })
 
   function handleChange (e) {
@@ -98,8 +97,7 @@ function Form (props) {
             id='product'
             name='product'
             value='Oil'
-            checked={form.product === 'Oil'}
-            onClick={() => setForm({ product: 'Oil' })}
+            //   value={form.product}
             onChange={handleChange}
           ></input>
         </div>
@@ -110,9 +108,8 @@ function Form (props) {
             type='radio'
             id='product'
             name='product'
-            value="Fat"
-            checked={form.product === 'Fat'}
-            onClick={() => setForm({ product: 'Fat' })}
+            value='Fat'
+            //   value={form.product}
             onChange={handleChange}
           ></input>
         </div>
