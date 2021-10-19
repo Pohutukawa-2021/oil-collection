@@ -1,8 +1,9 @@
+exports.up = knex => {
+  return knex.schema.alterTable('clients', table => {
+    table.boolean('admin')
+  })
+}
 
-exports.up = function(knex) {
-  
-};
-
-exports.down = function(knex) {
-  
-};
+exports.down = knex => {
+  return knex.schema.dropTable('clients')
+}
