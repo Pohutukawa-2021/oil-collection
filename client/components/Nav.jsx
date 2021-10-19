@@ -10,7 +10,6 @@ const backgroundImage = {
 }
 
 function Nav (props) {
-  // const { user } = props
   const login = getLoginFn(useAuth0)
   const logout = getLogoutFn(useAuth0)
   const register = getRegisterFn(useAuth0)

@@ -11,6 +11,7 @@ import NotNav from './NotNav'
 import SignIn from './SignIn'
 import ConfMessage from './ConfMessage'
 import Footer from './Footer'
+import AdminDashboard from './AdminDashboard'
 
 export default function App () {
   cacheUser(useAuth0)
@@ -26,6 +27,7 @@ export default function App () {
           <Route path='/details/update' component={EditDetails} />
           <Route path='/confirmation' component={ConfMessage} />
           <Route path='/register' component={Register} />
+          <Route path='/admin/dashboard' component={AdminDashboard} />
           <Route render={() => <Redirect to = {{ pathname: '/' }}/>} />
         </Switch>
       </main>
