@@ -118,13 +118,20 @@ function Form (props) {
         </div>
         <div className="field">
           <label htmlFor='containers' className='form-label'>Container:</label>
-          <input
+          <select
             className='form-input'
             id='containers'
             name='containers'
             value={form.containers}
             onChange={handleChange}
-          ></input>
+          >
+            <option value='wb100'>Wheelie Bin 100L</option>
+            <option value='wb180'>Wheelie Bin 180L</option>
+            <option value='drum'>Drum 200L</option>
+            <option value='small-drum'>Drum 60L</option>
+            <option value='ibc'>IBC - 1,000L</option>
+            <option value='tank'>Tank 450L</option>
+          </select>
         </div>
       </div>
       <button
