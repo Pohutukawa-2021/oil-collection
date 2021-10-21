@@ -1,4 +1,4 @@
-import { UPDATE_CLIENT_DETAILS, ADD_TOKEN_DETAILS, UPDATE_ORDER_ACTIVE_STATUS } from '../actions/clients'
+import { FETCH_ALL_CLIENTS_SUCCESS, UPDATE_CLIENT_DETAILS, ADD_TOKEN_DETAILS, UPDATE_ORDER_ACTIVE_STATUS } from '../actions/clients'
 
 const initialUser = {
 }
@@ -51,6 +51,16 @@ function updateClientHelper (state, details) {
     price,
     orderActive,
     orderTimeStamp
+  }
+}
+
+export function fetchAllClients (state = initialUser, action) {
+  switch (action.type) {
+    case FETCH_ALL_CLIENTS_SUCCESS:
+      return action.clients
+
+    default:
+      return state
   }
 }
 

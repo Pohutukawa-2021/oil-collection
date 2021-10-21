@@ -33,6 +33,11 @@ export function updateClientDetails (clientDetails, token) {
     .catch(errorHandler('PATCH', '/api/v1/clients/:id/update'))
 }
 
+export function fetchClients () {
+  return request.get('/api/v1/clients')
+    .then((res) => res.body)
+}
+
 function errorHandler (method, route) {
   return (err) => {
     console.log(err)

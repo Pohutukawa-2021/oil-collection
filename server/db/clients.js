@@ -4,7 +4,8 @@ module.exports = {
   getClientDetails,
   activateOrder,
   updateClientDetails,
-  addUser
+  addUser,
+  fetchAllClients
 }
 
 function getClientDetails (id, db = connection) {
@@ -47,7 +48,8 @@ function updateClientDetails (clientDetails, db = connection) {
     address_suburb: clientDetails.addressSuburb,
     address_city: clientDetails.addressCity,
     product: clientDetails.product,
-    containers: clientDetails.containers
+    containers: clientDetails.containers,
+    order_active: clientDetails.orderActive
   }
   return db('clients')
     .where('auth0_id', clientDetails.auth0Id)
@@ -77,4 +79,9 @@ function addUser (newUser, db = connection) {
     .then(() => {
       return null
     })
+}
+
+function fetchAllClients (db = connection) {
+  return db('clients')
+    .select()
 }

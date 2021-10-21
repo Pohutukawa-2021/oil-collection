@@ -1,10 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import Nav from './Nav'
 import { connect } from 'react-redux'
+import { editDetails } from '../actions/clients'
+import { fetchClients } from '../api/clients'
 
 function Requests (props) {
+  // useEffect(() => {
+  //   props.fetchClients()
+  // }, [])
+  // console.log(props)
+  const [activeOrder, setActiveOrder] = useState({
+    orderActive: props.client.orderActive
+  })
+
+  function handleDoneClick () {
+    const client = {
+      auth0Id: props.client.auth0Id,
+      token: props.client.token,
+      email: props.client.email,
+      orderActive: 0
+    }
+    props.dispatch(editDetails(client))
+    setActiveOrder({ orderActive: 0 })
+  }
+
   return (
     <>
       <Nav/>
@@ -28,8 +49,14 @@ function Requests (props) {
                 <td>{props.client.addressCity}</td>
                 <td>{props.client.containers}</td>
               </tr>
+
             </tbody>
           </table>
+          <button
+            value={activeOrder}
+            onClick={handleDoneClick}
+          >Done</button>
+
         </IfAuthenticated>
         <IfNotAuthenticated>
           <Redirect to={{ pathname: '/sign-in', state: { from: props.location } }}/>
