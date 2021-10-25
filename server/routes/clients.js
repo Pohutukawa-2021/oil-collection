@@ -66,13 +66,3 @@ router.patch('/:id/update', (req, res) => {
       res.status(500).json({ error: err.message })
     })
 })
-router.get('/', (req, res) => {
-  db.fetchAllClients()
-    .then((clients) => {
-      res.json(clients)
-      return null
-    })
-    .catch((err) => {
-      res.status(500).json('Database error:' + err.message)
-    })
-})

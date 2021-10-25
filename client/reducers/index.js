@@ -1,5 +1,5 @@
-import { FETCH_ALL_CLIENTS_SUCCESS, UPDATE_CLIENT_DETAILS, ADD_TOKEN_DETAILS, UPDATE_ORDER_ACTIVE_STATUS } from '../actions/clients'
-
+import { UPDATE_CLIENT_DETAILS, ADD_TOKEN_DETAILS, UPDATE_ORDER_ACTIVE_STATUS } from '../actions/clients'
+import { FETCH_ALL_CLIENTS_SUCCESS } from '../actions/admin'
 const initialUser = {
 }
 

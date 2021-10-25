@@ -4,8 +4,7 @@ module.exports = {
   getClientDetails,
   activateOrder,
   updateClientDetails,
-  addUser,
-  fetchAllClients
+  addUser
 }
 
 function getClientDetails (id, db = connection) {
@@ -79,9 +78,4 @@ function addUser (newUser, db = connection) {
     .then(() => {
       return null
     })
-}
-
-function fetchAllClients (db = connection) {
-  return db('clients')
-    .select()
 }

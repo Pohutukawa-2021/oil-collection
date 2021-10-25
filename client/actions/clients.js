@@ -1,4 +1,4 @@
-import { addOrder, addUser, getClientDetails, updateClientDetails, fetchClients } from '../api/clients'
+import { addOrder, addUser, getClientDetails, updateClientDetails } from '../api/clients'
 
 export const UPDATE_CLIENT_DETAILS = 'UPDATE_CLIENT_DETAILS'
 export const ADD_TOKEN_DETAILS = 'ADD_TOKEN_DETAILS'
@@ -21,19 +21,6 @@ export function updateDetails (details) {
   return {
     type: UPDATE_CLIENT_DETAILS,
     details
-  }
-}
-
-export function fetchAllClientsPending () {
-  return {
-    type: FETCH_ALL_CLIENTS_PENDING
-  }
-}
-
-export function fetchAllClientsSuccess (clients) {
-  return {
-    type: FETCH_ALL_CLIENTS_SUCCESS,
-    clients: clients
   }
 }
 
@@ -97,20 +84,5 @@ export function editDetails (user) {
         return null
       })
       .catch(err => console.error(err))
-  }
-}
-
-export function fetchAllClients () {
-  return (dispatch) => {
-    dispatch(fetchAllClientsPending())
-    return fetchClients()
-      .then((clients) => {
-        dispatch(fetchAllClientsSuccess(clients))
-        return null
-      })
-      .catch((err) => {
-        const errMessage = err.response?.text || err.message
-        dispatch(showError(errMessage))
-      })
   }
 }
