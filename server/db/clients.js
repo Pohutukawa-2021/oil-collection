@@ -47,7 +47,8 @@ function updateClientDetails (clientDetails, db = connection) {
     address_suburb: clientDetails.addressSuburb,
     address_city: clientDetails.addressCity,
     product: clientDetails.product,
-    containers: clientDetails.containers
+    containers: clientDetails.containers,
+    order_active: clientDetails.orderActive
   }
   return db('clients')
     .where('auth0_id', clientDetails.auth0Id)

@@ -5,6 +5,7 @@ import { addNewOrder } from '../actions/clients'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { IfOrderActive, IfNotOrderActive } from './OrderActive'
 import Nav from './Nav'
+
 function CollectionRequest (props) {
   // const [orderStatus, setOrderStatus] = useState({ activeOrder: false })
 

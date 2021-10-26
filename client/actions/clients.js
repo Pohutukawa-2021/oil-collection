@@ -6,6 +6,9 @@ export const ADD_TOKEN_DETAILS = 'ADD_TOKEN_DETAILS'
 export const SHOW_ERROR = 'SHOW_ERROR'
 export const UPDATE_ORDER_ACTIVE_STATUS = 'UPDATE_ORDER_ACTIVE_STATUS'
 
+export const FETCH_ALL_CLIENTS_PENDING = 'FETCH_ALL_CLIENTS_PENDING'
+export const FETCH_ALL_CLIENTS_SUCCESS = 'FETCH_ALL_CLIENTS_SUCCESS'
+
 export function updateOrderActiveStatus () {
   const orderStatus = { orderActive: true }
   return {

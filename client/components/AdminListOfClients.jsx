@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { editDetails } from '../actions/clients'
 import { fetchClients } from '../api/admin'
 
-function AdminDashboard () {
+function AdminListOfClients () {
   const [clients, setClients] = useState([])
 
   useEffect(() => {
@@ -40,42 +40,37 @@ function AdminDashboard () {
       <div>
         <IfAuthenticated>
 
-          <table>
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Business Name</th>
-                <th>Business Street Address</th>
-                <th>Business Suburb</th>
-                <th>Business City</th>
-                <th>Type of Container</th>
-                <th>Product</th>
-                <th>Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              {clients.map(client => {
-                return (
-                  <>
-
+          {clients.map(client => {
+            return (
+              <>
+                <table>
+                  <tbody>
                     <tr>
-
+                      <th>Date</th>
+                      <th>Business Name</th>
+                      <th>Business Street Address</th>
+                      <th>Business Suburb</th>
+                      <th>Business City</th>
+                      <th>Type of Container</th>
+                    </tr>
+                    <tr>
                       <td>{client.order_timestamp}</td>
                       <td>{client.business_name}</td>
                       <td>{client.address_street}</td>
                       <td>{client.address_suburb}</td>
                       <td>{client.address_city}</td>
                       <td>{client.containers}</td>
-                      <td>{client.product}</td>
-                      <td>{client.price}</td>
-
                     </tr>
 
-                  </>
-                )
-              })}
-            </tbody>
-          </table>
+                  </tbody>
+                </table>
+                <button
+                  value={client.orderActive}
+                  // onClick={handleDoneClick}
+                >Done</button>
+              </>
+            )
+          })}
 
         </IfAuthenticated>
         <IfNotAuthenticated>
@@ -92,4 +87,4 @@ function AdminDashboard () {
 //   }
 // }
 
-export default AdminDashboard
+export default AdminListOfClients
