@@ -1,4 +1,4 @@
-import { fetchClients } from '../api/clients'
+import { fetchClients } from '../api/admin'
 
 export const SHOW_ERROR = 'SHOW_ERROR'
 
