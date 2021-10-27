@@ -12,8 +12,6 @@ function AdminDashboard () {
   useEffect(() => {
     fetchClients()
       .then((clients) => {
-        setClients(clients)
-        console.log(clients)
         return null
       })
       .catch((error) => { console.error(error.message) })

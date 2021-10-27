@@ -1,36 +1,36 @@
 import request from 'superagent'
 
 export function getClientDetails (id, token) {
-  return request.get('/api/v1/clients/' + id)
+  return request.get('/api/v1/users/' + id)
     .set('authorization', `Bearer ${token}`)
     .then(res => {
       return res.body
     })
-    .catch(errorHandler('GET', '/api/v1/clients'))
+    .catch(errorHandler('GET', '/api/v1/users'))
 }
 
 export function addOrder (id) {
-  return request.patch(`/api/v1/clients/${id}`)
+  return request.patch(`/api/v1/users/${id}`)
     .send(id)
     .then(res => { return res.body })
-    .catch(errorHandler('PATCH', '/api/v1/clients'))
+    .catch(errorHandler('PATCH', '/api/v1/users'))
 }
 
 export function addUser (user, token) {
-  return request.post('/api/v1/clients')
+  return request.post('/api/v1/users')
     .set('authorization', `Bearer ${token}`)
     .send(user)
     .then(res => {
       return res.body
     })
-    .catch(errorHandler('POST', '/api/v1/clients'))
+    .catch(errorHandler('POST', '/api/v1/users'))
 }
 
 export function updateClientDetails (clientDetails, token) {
-  return request.patch('api/v1/clients/' + clientDetails.auth0Id + '/update')
+  return request.patch('api/v1/users/' + clientDetails.auth0Id + '/update')
     .send(clientDetails)
     .then(res => { return res.body })
-    .catch(errorHandler('PATCH', '/api/v1/clients/:id/update'))
+    .catch(errorHandler('PATCH', '/api/v1/users/:id/update'))
 }
 
 function errorHandler (method, route) {

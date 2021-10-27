@@ -33,7 +33,7 @@ function Register (props) {
 
 function mapStateToProps (state) {
   return {
-    client: state
+    client: state.updateClients
   }
 }
 
