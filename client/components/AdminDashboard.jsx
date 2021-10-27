@@ -6,14 +6,15 @@ import { connect } from 'react-redux'
 import { editDetails } from '../actions/clients'
 import { fetchClients } from '../api/admin'
 
-function AdminDashboard () {
+function AdminDashboard (props) {
+  const { token } = props.client.updateClients
+
   const [clients, setClients] = useState([])
 
   useEffect(() => {
-    fetchClients()
+    fetchClients(token)
       .then((clients) => {
         setClients(clients)
-        console.log(clients)
         return null
       })
       .catch((error) => { console.error(error.message) })
@@ -56,22 +57,20 @@ function AdminDashboard () {
             <tbody>
               {clients.map(client => {
                 return (
-                  <>
 
-                    <tr>
+                  <tr key={client.id}>
 
-                      <td>{client.order_timestamp}</td>
-                      <td>{client.business_name}</td>
-                      <td>{client.address_street}</td>
-                      <td>{client.address_suburb}</td>
-                      <td>{client.address_city}</td>
-                      <td>{client.containers}</td>
-                      <td>{client.product}</td>
-                      <td>{client.price}</td>
+                    <td>{client.order_timestamp}</td>
+                    <td>{client.business_name}</td>
+                    <td>{client.address_street}</td>
+                    <td>{client.address_suburb}</td>
+                    <td>{client.address_city}</td>
+                    <td>{client.containers}</td>
+                    <td>{client.product}</td>
+                    <td>{client.price}</td>
 
-                    </tr>
+                  </tr>
 
-                  </>
                 )
               })}
             </tbody>
@@ -86,10 +85,10 @@ function AdminDashboard () {
   )
 }
 
-// function mapStateToProps (state) {
-//   return {
-//     client: state
-//   }
-// }
+function mapStateToProps (state) {
+  return {
+    client: state.updateClients
+  }
+}
 
-export default AdminDashboard
+export default connect(mapStateToProps)(AdminDashboard)
