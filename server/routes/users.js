@@ -1,6 +1,6 @@
 const express = require('express')
 
-const db = require('../db/clients')
+const db = require('../db/users')
 const { checkJwt } = require('../auth0')
 
 const router = express.Router()
@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
 })
 
 router.get('/:id', checkJwt, (req, res) => {
-  db.getClientDetails(req.params.id)
+  db.getUserDetails(req.params.id)
     .then(results => {
       res.json(results)
       return null
@@ -57,7 +57,7 @@ router.patch('/:id', (req, res) => {
 
 router.patch('/:id/update', (req, res) => {
   const updateDetails = req.body
-  db.updateClientDetails(updateDetails)
+  db.updateUserDetails(updateDetails)
     .then((update) => {
       res.status(200).json(update)
       return null

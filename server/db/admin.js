@@ -5,6 +5,6 @@ module.exports = {
 }
 
 function fetchAllClients (db = connection) {
-  return db('clients')
+  return db('users')
     .select()
 }

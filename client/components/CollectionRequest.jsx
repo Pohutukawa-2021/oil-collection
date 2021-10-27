@@ -9,7 +9,7 @@ import Nav from './Nav'
 function CollectionRequest (props) {
   // const [orderStatus, setOrderStatus] = useState({ activeOrder: false })
 
-  const { auth0Id, businessName, addressStreet, addressCity, addressSuburb, product, orderActive, orderTimeStamp } = props.client.updateClients
+  const { auth0Id, businessName, addressStreet, addressCity, addressSuburb, product, orderActive, orderTimeStamp } = props.client
 
   const history = useHistory()
 
@@ -65,7 +65,7 @@ function CollectionRequest (props) {
 
 function mapStateToProps (state) {
   return {
-    client: state
+    client: state.updateClients
   }
 }
 
