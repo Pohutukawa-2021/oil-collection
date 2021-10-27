@@ -1,7 +1,8 @@
 import request from 'superagent'
 
-export function fetchClients () {
+export function fetchClients (token) {
   return request.get('/api/v1/admin')
+    .set('authorization', `Bearer ${token}`)
     .then((res) => res.body)
     .catch(errorHandler('GET', '/api/v1/admin'))
 }

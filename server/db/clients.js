@@ -23,7 +23,8 @@ function getClientDetails (id, db = connection) {
       'containers',
       'price',
       'order_active as orderActive',
-      'order_timestamp as orderTimeStamp'
+      'order_timestamp as orderTimeStamp',
+      'admin'
     )
     .first()
 }
@@ -32,7 +33,7 @@ function activateOrder (id, db = connection) {
   return db('clients')
     .where('auth0_id', id)
     .update({
-      order_active: 1, // 0 is false, 1 is true
+      order_active: true, // 0 is false, 1 is true
       order_timestamp: new Date().toLocaleString()
     })
     .then(() => getClientDetails(id, db))
