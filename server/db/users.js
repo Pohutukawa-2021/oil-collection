@@ -1,14 +1,14 @@
 const connection = require('./connection')
 
 module.exports = {
-  getClientDetails,
+  getUserDetails,
   activateOrder,
-  updateClientDetails,
+  updateUserDetails,
   addUser
 }
 
-function getClientDetails (id, db = connection) {
-  return db('clients')
+function getUserDetails (id, db = connection) {
+  return db('users')
     .where('auth0_id', id)
     .select(
       'id',
@@ -30,29 +30,29 @@ function getClientDetails (id, db = connection) {
 }
 
 function activateOrder (id, db = connection) {
-  return db('clients')
+  return db('users')
     .where('auth0_id', id)
     .update({
       order_active: true, // 0 is false, 1 is true
       order_timestamp: new Date().toLocaleString()
     })
-    .then(() => getClientDetails(id, db))
+    .then(() => getUserDetails(id, db))
 }
 
-function updateClientDetails (clientDetails, db = connection) {
+function updateUserDetails (userDetails, db = connection) {
   const updateObject = {
-    first_name: clientDetails.firstName,
-    last_name: clientDetails.lastName,
-    business_name: clientDetails.businessName,
-    address_street: clientDetails.addressStreet,
-    address_suburb: clientDetails.addressSuburb,
-    address_city: clientDetails.addressCity,
-    product: clientDetails.product,
-    containers: clientDetails.containers,
-    order_active: clientDetails.orderActive
+    first_name: userDetails.firstName,
+    last_name: userDetails.lastName,
+    business_name: userDetails.businessName,
+    address_street: userDetails.addressStreet,
+    address_suburb: userDetails.addressSuburb,
+    address_city: userDetails.addressCity,
+    product: userDetails.product,
+    containers: userDetails.containers,
+    order_active: userDetails.orderActive
   }
-  return db('clients')
-    .where('auth0_id', clientDetails.auth0Id)
+  return db('users')
+    .where('auth0_id', userDetails.auth0Id)
     .update(updateObject)
     .then(() => {
       return null
@@ -74,7 +74,7 @@ function addUser (newUser, db = connection) {
     order_active: false,
     price
   }
-  return db('clients')
+  return db('users')
     .insert(addNewUser)
     .then(() => {
       return null
