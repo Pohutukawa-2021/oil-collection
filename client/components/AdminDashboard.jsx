@@ -1,22 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import { Redirect } from 'react-router-dom'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import Nav from './Nav'
 import { connect } from 'react-redux'
-import { editDetails } from '../actions/clients'
-import { fetchClients } from '../api/admin'
+import { fetchAllClients } from '../actions/admin'
 
-function AdminDashboard () {
-  const [clients, setClients] = useState([])
-
+function AdminDashboard (props) {
   useEffect(() => {
-    fetchClients()
-      .then((clients) => {
-        return null
-      })
-      .catch((error) => { console.error(error.message) })
+    props.dispatch(fetchAllClients())
   }, [])
-
+  // const [clients, setClients] = useState([props.clients])
+  const clients = props.clients
+  console.log(props.clients)
+  // const {
+  //   id,
+  //   orderTimestamp: order_timestamp,
+  //   business_name: businessName,
+  //   address_street: addressStreet,
+  //   address_suburb: addressSuburb,
+  //   address_city: addressCity,
+  //   containers,
+  //   product,
+  //   price
+  //  } = clients
+  // console.log(clients)
   // const [activeOrder, setActiveOrder] = useState({
   //   orderActive: clients.orderActive
   // })
@@ -35,7 +41,7 @@ function AdminDashboard () {
   return (
     <>
       <Nav/>
-      <div>
+      <div className="admin-dashboard">
         <IfAuthenticated>
 
           <table>
@@ -52,7 +58,7 @@ function AdminDashboard () {
               </tr>
             </thead>
             <tbody>
-              {clients.map(client => {
+              {props.clients.map(client => {
                 return (
                   <>
 
@@ -71,7 +77,8 @@ function AdminDashboard () {
 
                   </>
                 )
-              })}
+              }
+              )}
             </tbody>
           </table>
 
@@ -84,10 +91,10 @@ function AdminDashboard () {
   )
 }
 
-// function mapStateToProps (state) {
-//   return {
-//     client: state
-//   }
-// }
+function mapStateToProps (state) {
+  return {
+    clients: state.admin
+  }
+}
 
-export default AdminDashboard
+export default connect(mapStateToProps)(AdminDashboard)
