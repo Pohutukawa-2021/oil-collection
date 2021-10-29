@@ -7,7 +7,7 @@ import { editDetails } from '../actions/clients'
 import { fetchClients } from '../api/admin'
 
 function AdminDashboard (props) {
-  const { token } = props.client.updateClients
+  const { token } = props.client.clients
 
   const [clients, setClients] = useState([])
 
