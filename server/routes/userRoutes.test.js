@@ -1,8 +1,8 @@
 /* eslint-disable jest/no-commented-out-tests */
 const request = require('supertest')
 const server = require('../server')
-const db = require('../db/clients')
-jest.mock('../db/clients')
+const db = require('../db/users')
+jest.mock('../db/users')
 const { getAdminToken } = require('./mockToken')
 
 const testAuthAdminHeader = {
@@ -10,11 +10,11 @@ const testAuthAdminHeader = {
 }
 
 test('GET Client details returns all details', () => {
-  db.getClientDetails.mockImplementation(() => {
+  db.getUserDetails.mockImplementation(() => {
     return Promise.resolve({ id: 123 })
   })
   return request(server)
-    .get('/api/v1/clients/4')
+    .get('/api/v1/users/4')
     .set(testAuthAdminHeader)
     .then((response) => {
       expect(response.status).toBe(200)
@@ -29,7 +29,7 @@ test('UPDATE order active status', () => {
     return Promise.resolve({ order_active: 1 })
   })
   return request(server)
-    .patch('/api/v1/clients/4')
+    .patch('/api/v1/users/4')
     .set(testAuthAdminHeader)
     .then((orderStatus) => {
       expect(orderStatus.status).toBe(200)
@@ -39,8 +39,8 @@ test('UPDATE order active status', () => {
 })
 
 test('UPDATE Client details', () => {
-  db.updateClientDetails = jest.fn()
-  db.updateClientDetails.mockImplementation(() => {
+  db.updateUserDetails = jest.fn()
+  db.updateUserDetails.mockImplementation(() => {
     return Promise.resolve({
       id: 2,
       first_name: 'Zahira',
@@ -54,7 +54,7 @@ test('UPDATE Client details', () => {
     })
   })
   return request(server)
-    .patch('/api/v1/clients/2/update')
+    .patch('/api/v1/users/2/update')
     .then((updateDetails) => {
       expect(updateDetails.status).toBe(200)
       expect(updateDetails.body.first_name).toBe('Zahira')
@@ -71,7 +71,7 @@ test('POST adding new user', () => {
   })
   const userData = {}
   return request(server)
-    .post('/api/v1/clients')
+    .post('/api/v1/users')
     .send(userData)
     .then((response) => {
       expect(response.status).toBe(201)
