@@ -9,7 +9,7 @@ const testAuthAdminHeader = {
   Authorization: `Bearer ${getAdminToken()}`
 }
 
-test('GET Client details returns all details', () => {
+test('GET User details returns all details', () => {
   db.getUserDetails.mockImplementation(() => {
     return Promise.resolve({ id: 123 })
   })
@@ -38,7 +38,7 @@ test('UPDATE order active status', () => {
     })
 })
 
-test('UPDATE Client details', () => {
+test('UPDATE User details', () => {
   db.updateUserDetails = jest.fn()
   db.updateUserDetails.mockImplementation(() => {
     return Promise.resolve({

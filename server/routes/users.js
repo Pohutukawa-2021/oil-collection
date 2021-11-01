@@ -16,19 +16,19 @@ router.post('/', (req, res) => {
       res.sendStatus(201)
       return null
     })
-    .catch(err => {
-      res.status(500).json({ error: err.message })
+    .catch(() => {
+      res.status(404)
     })
 })
 
-router.get('/:id', checkJwt, (req, res) => {
+router.get('/:id', checkJwt, (req, res, next) => {
   db.getUserDetails(req.params.id)
     .then(results => {
       res.json(results)
       return null
     })
-    .catch(err => {
-      res.status(500).json({ error: err.message })
+    .catch(() => {
+      res.status(404)
     })
 })
 
@@ -38,8 +38,8 @@ router.patch('/:id', (req, res) => {
       res.status(200).json(request)
       return null
     })
-    .catch((err) => {
-      res.status(500).json({ error: err.message })
+    .catch(() => {
+      res.status(404)
     })
 })
 
@@ -50,7 +50,7 @@ router.patch('/:id/update', (req, res) => {
       res.status(200).json(update)
       return null
     })
-    .catch((err) => {
-      res.status(500).json({ error: err.message })
+    .catch(() => {
+      res.status(404)
     })
 })
