@@ -48,7 +48,8 @@
     "react-service-worker": "^0.1.1",
     "redux-thunk": "^2.3.0",
     "sqlite3": "^5.0.2",
-    "superagent": "^6.1.0"
+    "superagent": "^6.1.0",
+    "dotenv": "^10.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.13.15",
@@ -62,7 +63,6 @@
     "@testing-library/user-event": "^13.2.1",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.3.0",
-    "dotenv": "^10.0.0",
     "eslint": "7.9.0",
     "eslint-config-eda": "0.1.4",
     "nodemon": "^2.0.7",
