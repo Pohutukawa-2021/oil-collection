@@ -13,7 +13,8 @@
     "start": "node server",
     "dev": "run-p dev:client dev:server",
     "lint": "eslint . --ext .js,.jsx",
-    "test": "jest"
+    "test": "jest",
+    "heroku-postbuild": "npm run webpack"
   },
   "author": "EDA",
   "license": "ISC",
