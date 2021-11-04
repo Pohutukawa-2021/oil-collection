@@ -68,7 +68,6 @@ export function registerDetails (user) {
   return dispatch => {
     addUser(user, user.token)
       .then(() => {
-        console.log(user)
         dispatch(updateDetails(user))
         return null
       })
