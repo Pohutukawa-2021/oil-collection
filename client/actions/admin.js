@@ -18,10 +18,10 @@ export function fetchAllClientsSuccess (clients) {
   }
 }
 
-export function fetchAllClients () {
+export function fetchAllClients (token) {
   return (dispatch) => {
     dispatch(fetchAllClientsPending())
-    return fetchClients()
+    return fetchClients(token)
       .then((clients) => {
         dispatch(fetchAllClientsSuccess(clients))
         return null

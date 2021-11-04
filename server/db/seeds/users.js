@@ -16,7 +16,8 @@ exports.seed = (knex) => {
           product: 'oil',
           containers: 'tank',
           price: '0.3',
-          order_active: false
+          order_active: false,
+          admin: false
         },
         {
           id: 2,
@@ -30,7 +31,8 @@ exports.seed = (knex) => {
           product: 'oil',
           containers: 'wb100',
           price: '0.25',
-          order_active: false
+          order_active: false,
+          admin: false
         },
         {
           id: 3,
@@ -44,7 +46,8 @@ exports.seed = (knex) => {
           product: 'oil',
           containers: 'wb180',
           price: '0.20',
-          order_active: false
+          order_active: false,
+          admin: false
         },
         {
           id: 4,
@@ -58,7 +61,8 @@ exports.seed = (knex) => {
           product: 'fat',
           containers: 'drum',
           price: '0.15',
-          order_active: false
+          order_active: false,
+          admin: false
         },
         {
           id: 5,
@@ -72,7 +76,8 @@ exports.seed = (knex) => {
           product: 'fat',
           containers: 'drum',
           price: '0.15',
-          order_active: false
+          order_active: false,
+          admin: false
         }
       ])
     })
