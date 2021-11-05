@@ -12,9 +12,14 @@ function EditDetails (props) {
   function handleClick (form) {
     const client = {
       ...form,
+      id: props.client.id,
       auth0Id: props.client.auth0Id,
       token: props.client.token,
-      email: props.client.email
+      email: props.client.email,
+      orderActive: props.client.orderActive,
+      orderTimeStamp: props.client.orderTimeStamp,
+      admin: props.client.admin,
+      price: props.client.price
     }
     props.dispatch(editDetails(client))
     history.push('/sign-in')
