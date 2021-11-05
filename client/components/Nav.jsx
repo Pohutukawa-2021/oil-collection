@@ -55,7 +55,7 @@ function Nav (props) {
 
 function mapStateToProps (state) {
   return {
-    user: state
+    user: state.updateClients
   }
 }
 
